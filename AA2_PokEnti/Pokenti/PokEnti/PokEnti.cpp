@@ -24,13 +24,13 @@ struct Ash
 };
 
 // Función para imprimir el mapa
-void printMap(Ash ashPosition, char map[HEIGHT][WIDTH], int pokedex)
+void printMap(Ash ashPosition, char** map, int pokedex, int height)
 {
     // Limpia la pantalla
     system("cls");
 
     // Imprime el mapa
-    for (int i = 0; i < HEIGHT; ++i)
+    for (int i = 0; i < height; ++i)
     {
         for (int j = 0; j < WIDTH; ++j)
         {
@@ -52,7 +52,7 @@ void printMap(Ash ashPosition, char map[HEIGHT][WIDTH], int pokedex)
 }
 
 // Función para verificar si Ash puede moverse a una posición específica
-bool movingAsh(Ash ashPosition, int newAshPositionX, int newAshPositionY, char map[HEIGHT][WIDTH])
+bool movingAsh(Ash ashPosition, int newAshPositionX, int newAshPositionY, char** map)
 {
     // Nueva posición
     int newPosX = ashPosition.x + newAshPositionX;
@@ -82,7 +82,7 @@ bool movingAsh(Ash ashPosition, int newAshPositionX, int newAshPositionY, char m
 }
 
 // Función para generar Pokémon en una zona del mapa
-void generatingPokes(char map[HEIGHT][WIDTH], int startX, int startY, int endX, int endY)
+void generatingPokes(char** map, int startX, int startY, int endX, int endY)
 {
     for (int i = 0; i < 5; ++i)
     {
@@ -101,10 +101,10 @@ void generatingPokes(char map[HEIGHT][WIDTH], int startX, int startY, int endX, 
 }
 
 // Función para capturar un Pokémon
-void capturePokes(Ash ashPosition, char map[HEIGHT][WIDTH], int& pokedex)
+void capturePokes(Ash ashPosition, char** map, int& pokedex)
 {
     // Verifica si hay un Pokémon adyacente a la posición de Ash y lo captura
-    if (map[ashPosition.y - 1][ashPosition.x] == 'P')
+    if (ashPosition.y - 1 >= 0 && map[ashPosition.y - 1][ashPosition.x] == 'P')
     {
         map[ashPosition.y - 1][ashPosition.x] = ' ';
         pokedex++;
@@ -127,7 +127,7 @@ void capturePokes(Ash ashPosition, char map[HEIGHT][WIDTH], int& pokedex)
 }
 
 // Función para mover a Ash a la siguiente ubicación
-void moveNextRegion(Ash& ashPosition, Region& currentZone, int pokedex, char map[HEIGHT][WIDTH])
+void moveNextRegion(Ash& ashPosition, Region& currentZone, int pokedex, char** map)
 {
     // Verifica el valor de la Pokédex para determinar la próxima ubicación
     if (pokedex >= 5 && pokedex < 10)
@@ -160,9 +160,9 @@ void moveNextRegion(Ash& ashPosition, Region& currentZone, int pokedex, char map
     else if (pokedex >= 15)
     {
         // Elimina la barrera entre Ciudad Celeste y Liga Pokénti
-        for (int i = 0; i <= HEIGHT; ++i)
+        for (int i = 0; i < HEIGHT; ++i) // Cambio en la condición del bucle
         {
-            for (int j = WIDTH / 2 - 1; j <= WIDTH / 2; ++j)
+            for (int j = WIDTH / 2 - 1; j < WIDTH / 2 + 1; ++j) // Cambio en la condición del bucle
             {
                 map[i][j] = ' ';
             }
@@ -182,11 +182,11 @@ int main()
     // Semilla para la generación aleatoria
     srand(time(nullptr));
 
-    char map[HEIGHT][WIDTH]; // Matriz para representar el mapa
-
-    // Inicializa el mapa con espacios en blanco
+    // Matriz para representar el mapa
+    char** map = new char* [HEIGHT];
     for (int i = 0; i < HEIGHT; ++i)
     {
+        map[i] = new char[WIDTH];
         for (int j = 0; j < WIDTH; ++j)
         {
             map[i][j] = ' ';
@@ -211,7 +211,7 @@ int main()
     // Bucle principal del juego
     while (true)
     {
-        printMap(ashPosition, map, pokedex); // Imprime el mapa con la posición actual de Ash y el contador de la Pokédex
+        printMap(ashPosition, map, pokedex, HEIGHT); // Imprime el mapa con la posición actual de Ash y el contador de la Pokédex
 
         // Verifica si todos los Pokémon en la zona actual han sido capturados
         if ((currentRegion == PUEBLO_PALETA && pokedex == 5) ||
@@ -260,8 +260,16 @@ int main()
         Sleep(100);
     }
 
+    // Libera la memoria asignada para la matriz
+    for (int i = 0; i < HEIGHT; ++i)
+    {
+        delete[] map[i];
+    }
+    delete[] map;
+
     return 0;
 }
+
 
 
 
