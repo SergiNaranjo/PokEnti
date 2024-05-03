@@ -52,7 +52,7 @@ void printMap(Ash ashPosition, char map[HEIGHT][WIDTH], int pokedex)
 }
 
 // Función para verificar si Ash puede moverse a una posición específica
-bool canMove(Ash ashPosition, int newAshPositionX, int newAshPositionY, char map[HEIGHT][WIDTH])
+bool movingAsh(Ash ashPosition, int newAshPositionX, int newAshPositionY, char map[HEIGHT][WIDTH])
 {
     // Nueva posición
     int newPosX = ashPosition.x + newAshPositionX;
@@ -82,7 +82,7 @@ bool canMove(Ash ashPosition, int newAshPositionX, int newAshPositionY, char map
 }
 
 // Función para generar Pokémon en una zona del mapa
-void generatePokemonInZone(char map[HEIGHT][WIDTH], int startX, int startY, int endX, int endY)
+void generatingPokes(char map[HEIGHT][WIDTH], int startX, int startY, int endX, int endY)
 {
     for (int i = 0; i < 5; ++i)
     {
@@ -101,7 +101,7 @@ void generatePokemonInZone(char map[HEIGHT][WIDTH], int startX, int startY, int 
 }
 
 // Función para capturar un Pokémon
-void capturePokemon(Ash ashPosition, char map[HEIGHT][WIDTH], int& pokedex)
+void capturePokes(Ash ashPosition, char map[HEIGHT][WIDTH], int& pokedex)
 {
     // Verifica si hay un Pokémon adyacente a la posición de Ash y lo captura
     if (map[ashPosition.y - 1][ashPosition.x] == 'P')
@@ -126,24 +126,8 @@ void capturePokemon(Ash ashPosition, char map[HEIGHT][WIDTH], int& pokedex)
     }
 }
 
-// Función para verificar si todos los Pokémon en una zona han sido capturados
-bool allPokemonCaptured(char map[HEIGHT][WIDTH], int startX, int startY, int endX, int endY)
-{
-    for (int y = startY; y <= endY; ++y)
-    {
-        for (int x = startX; x <= endX; ++x)
-        {
-            if (map[y][x] == 'P')
-            {
-                return false;
-            }
-        }
-    }
-    return true;
-}
-
 // Función para mover a Ash a la siguiente ubicación
-void moveToNextZone(Ash& ashPosition, Region& currentZone, int pokedex, char map[HEIGHT][WIDTH])
+void moveNextRegion(Ash& ashPosition, Region& currentZone, int pokedex, char map[HEIGHT][WIDTH])
 {
     // Verifica el valor de la Pokédex para determinar la próxima ubicación
     if (pokedex >= 5 && pokedex < 10)
@@ -158,7 +142,7 @@ void moveToNextZone(Ash& ashPosition, Region& currentZone, int pokedex, char map
         }
         currentZone = BOSQUE_VERDE;
         // Genera Pokémon en Bosque Verde
-        generatePokemonInZone(map, WIDTH / 2 + 1, 0, WIDTH - 1, HEIGHT / 2 - 2);
+        generatingPokes(map, WIDTH / 2 + 1, 0, WIDTH - 1, HEIGHT / 2 - 2);
     }
     else if (pokedex >= 10 && pokedex < 15)
     {
@@ -171,7 +155,7 @@ void moveToNextZone(Ash& ashPosition, Region& currentZone, int pokedex, char map
             }
         }
         currentZone = CIUDAD_CELESTE;
-        generatePokemonInZone(map, WIDTH / 2 + 1, HEIGHT / 2 + 1, WIDTH - 1, HEIGHT - 1); // Genera Pokémon en Ciudad Celeste
+        generatingPokes(map, WIDTH / 2 + 1, HEIGHT / 2 + 1, WIDTH - 1, HEIGHT - 1); // Genera Pokémon en Ciudad Celeste
     }
     else if (pokedex >= 15)
     {
@@ -185,7 +169,7 @@ void moveToNextZone(Ash& ashPosition, Region& currentZone, int pokedex, char map
         }
         currentZone = LIGA_POKENTI;
         // Genera Pokémon en Liga Pokénti
-        generatePokemonInZone(map, 0, HEIGHT / 2 + 1, WIDTH / 2 - 2, HEIGHT - 1);
+        generatingPokes(map, 0, HEIGHT / 2 + 1, WIDTH / 2 - 2, HEIGHT - 1);
     }
 }
 
@@ -222,7 +206,7 @@ int main()
     }
 
     // Genera Pokémon en la zona inicial
-    generatePokemonInZone(map, 0, 0, WIDTH / 2 - 2, HEIGHT / 2 - 2);
+    generatingPokes(map, 0, 0, WIDTH / 2 - 2, HEIGHT / 2 - 2);
 
     // Bucle principal del juego
     while (true)
@@ -234,7 +218,7 @@ int main()
             (currentRegion == BOSQUE_VERDE && pokedex == 10) ||
             (currentRegion == CIUDAD_CELESTE && pokedex == 15))
         {
-            moveToNextZone(ashPosition, currentRegion, pokedex, map);
+            moveNextRegion(ashPosition, currentRegion, pokedex, map);
         }
 
         if (pokedex == 20)
@@ -245,27 +229,27 @@ int main()
         // Lee la entrada del teclado
         if (GetAsyncKeyState(VK_UP)) // Arriba
         {
-            if (canMove(ashPosition, 0, -1, map))
+            if (movingAsh(ashPosition, 0, -1, map))
                 ashPosition.y--;
         }
         if (GetAsyncKeyState(VK_DOWN)) // Abajo
         {
-            if (canMove(ashPosition, 0, 1, map))
+            if (movingAsh(ashPosition, 0, 1, map))
                 ashPosition.y++;
         }
         if (GetAsyncKeyState(VK_LEFT)) // Izquierda
         {
-            if (canMove(ashPosition, -1, 0, map))
+            if (movingAsh(ashPosition, -1, 0, map))
                 ashPosition.x--;
         }
         if (GetAsyncKeyState(VK_RIGHT)) // Derecha
         {
-            if (canMove(ashPosition, 1, 0, map))
+            if (movingAsh(ashPosition, 1, 0, map))
                 ashPosition.x++;
         }
         if (GetAsyncKeyState(VK_SPACE)) // Espacio (capturar Pokémon)
         {
-            capturePokemon(ashPosition, map, pokedex);
+            capturePokes(ashPosition, map, pokedex);
         }
         if (GetAsyncKeyState(VK_ESCAPE)) // Esc (Salir del juego)
         {
