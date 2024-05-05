@@ -2,10 +2,11 @@
 #include <cstdlib> // Para rand() y srand()
 #include <ctime>   // Para time()
 #include <windows.h>
+#include "LectorArchivoConf.h"
 
 // Tamaño del mapa
-const int WIDTH = 40;
-const int HEIGHT = 20;
+const int WIDTH = variable1;
+const int HEIGHT = variable2;
 
 // Definición de las zonas del mapa
 enum Region
@@ -266,6 +267,22 @@ int main()
         delete[] map[i];
     }
     delete[] map;
+
+    std::string nombreArchivo = "valores.txt";
+    std::vector<int> valores = leerValoresDesdeArchivo(nombreArchivo);
+    if (!valores.empty()) {
+        // Asignar valores a variables
+        if (valores.size() >= 2) {
+            int variable1 = valores[0];
+            int variable2 = valores[1];
+        }
+        else {
+            std::cerr << "El archivo no contiene suficientes valores.\n";
+        }
+    }
+    else {
+        std::cerr << "No se pudieron leer valores del archivo.\n";
+    }
 
     return 0;
 }
