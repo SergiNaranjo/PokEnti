@@ -6,6 +6,7 @@
 #include <windows.h>
 #include "Ash.h"
 #include "Map.h"
+#include "Conf.h" // El header no funciona 
 
 int main()
 {
