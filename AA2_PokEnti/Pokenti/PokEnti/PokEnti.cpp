@@ -1,3 +1,6 @@
+
+// Héctor Zornoza y Sergi Naranjo 
+
 #include <iostream>
 #include <ctime> 
 #include <windows.h>

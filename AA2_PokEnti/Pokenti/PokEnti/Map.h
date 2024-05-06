@@ -13,7 +13,6 @@ void printMap(Ash ashPosition, char map[MAP_HEIGHT][MAP_WIDTH], int pokedex)
 {
     system("cls");
 
-    // Imprime el mapa
     for (int i = 0; i < MAP_HEIGHT; ++i)
     {
         for (int j = 0; j < MAP_WIDTH; ++j)
