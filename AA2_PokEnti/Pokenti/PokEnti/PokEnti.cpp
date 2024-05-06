@@ -10,6 +10,7 @@
 
 
 
+
 int main()
 {
     Ash ashPosition = { 0, 0 };        
