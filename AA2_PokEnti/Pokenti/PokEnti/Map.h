@@ -14,17 +14,58 @@ void printMap(Ash ashPosition, char** map, int pokedex)
 {
     system("cls");
 
+    char ashSymbol;
+    if (GetAsyncKeyState(VK_UP)) 
+    {
+        ashSymbol = '^';
+    }
+    else if (GetAsyncKeyState(VK_DOWN)) 
+    {
+        ashSymbol = 'v';
+    }
+    else if (GetAsyncKeyState(VK_LEFT)) 
+    {
+        ashSymbol = '<';
+    }
+    else if (GetAsyncKeyState(VK_RIGHT)) 
+    {
+        ashSymbol = '>';
+    }
+    else 
+    {
+        if (ashPosition.lastDirection == ashDirection::UP)
+        {
+            ashSymbol = '^';
+        }
+        else if (ashPosition.lastDirection == ashDirection::DOWN)
+        {
+            ashSymbol = 'v';
+        }  
+        else if (ashPosition.lastDirection == ashDirection::LEFT)
+        {
+            ashSymbol = '<';
+        }   
+        else if (ashPosition.lastDirection == ashDirection::RIGHT)
+        {
+            ashSymbol = '>';
+        }
+        else
+        {
+            ashSymbol = 'A';
+        }
+    }
+
     for (int i = 0; i < MAP_HEIGHT; ++i)
     {
         for (int j = 0; j < MAP_WIDTH; ++j)
         {
             if (ashPosition.x == j && ashPosition.y == i)
             {
-                std::cout << "A";
+                std::cout << ashSymbol;
             }
             else
             {
-                std::cout << map[i][j]; 
+                std::cout << map[i][j];
             }
         }
         std::cout << std::endl;

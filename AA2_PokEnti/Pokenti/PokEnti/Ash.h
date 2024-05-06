@@ -1,10 +1,20 @@
 #pragma once
 #include "Util.h"
 
+enum class ashDirection
+{
+    UP,
+    DOWN,
+    LEFT,
+    RIGHT,
+    COUNT
+};
+
 struct Ash
 {
     int x;
     int y;
+    ashDirection lastDirection;
 };
 
 bool canMove(Ash ashPosition, int newAshPositionX, int newAshPositionY, char** map)
