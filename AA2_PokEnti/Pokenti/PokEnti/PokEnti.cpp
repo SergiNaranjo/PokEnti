@@ -4,6 +4,9 @@
 #include <windows.h>
 #include "LectorArchivoConf.h"
 #include "Mapa.h"
+#include "Ash.h"
+#include "Movement.h"
+#include "Pokes.h"
 
 
 
