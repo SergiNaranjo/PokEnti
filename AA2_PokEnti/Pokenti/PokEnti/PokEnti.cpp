@@ -4,6 +4,8 @@
 #include <windows.h>
 #include "LectorArchivoConf.h"
 #include "Mapa.h"
+#include "Ash.h"
+
 
 
 
