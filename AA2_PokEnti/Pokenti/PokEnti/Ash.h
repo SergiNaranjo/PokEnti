@@ -1,5 +1,5 @@
 #pragma once
-#include "Mapa.h"
+#include "Util.h"
 
 struct Ash
 {
@@ -7,22 +7,22 @@ struct Ash
     int y;
 };
 
-bool movingAsh(Ash ashPosition, int newAshPositionX, int newAshPositionY, char** map)
+bool canMove(Ash ashPosition, int dx, int dy, char map[MAP_HEIGHT][MAP_WIDTH])
 {
+    // Nueva posición
+    int new_x = ashPosition.x + dx;
+    int new_y = ashPosition.y + dy;
 
-    int newPosX = ashPosition.x + newAshPositionX;
-    int newPosY = ashPosition.y + newAshPositionY;
-
-
-    if (newPosX < 0 || newPosX >= WIDTH || newPosY < 0 || newPosY >= HEIGHT)
+    // Verifica si la nueva posición está dentro de los límites del mapa
+    if (new_x < 0 || new_x >= MAP_WIDTH || new_y < 0 || new_y >= MAP_HEIGHT)
     {
         return false;
     }
 
-
-    if (map[newPosY][newPosX] == 'X')
+    // Verifica si la nueva posición está bloqueada por una barrera
+    if (map[new_y][new_x] == 'X')
     {
-
+        // Si el jugador ha capturado todos los Pokémon de la zona, puede cruzar las barreras
         if (map[ashPosition.y][ashPosition.x] == ' ' || map[ashPosition.y][ashPosition.x] == 'P')
         {
             return true;

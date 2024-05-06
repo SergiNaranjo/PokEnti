@@ -129,6 +129,12 @@
   <ItemGroup>
     <ClCompile Include="PokEnti.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Ash.h" />
+    <ClInclude Include="Map.h" />
+    <ClInclude Include="Pokes.h" />
+    <ClInclude Include="Util.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
