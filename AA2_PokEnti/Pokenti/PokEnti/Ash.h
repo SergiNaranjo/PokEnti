@@ -7,27 +7,12 @@ struct Ash
     int y;
 };
 
-bool canMove(Ash ashPosition, int dx, int dy, char map[MAP_HEIGHT][MAP_WIDTH])
+bool canMove(Ash ashPosition, int newAshPositionX, int newAshPositionY, char** map)
 {
-    int new_x = ashPosition.x + dx;
-    int new_y = ashPosition.y + dy;
+    // Nueva posición
+    int newPosX = ashPosition.x + newAshPositionX;
+    int newPosY = ashPosition.y + newAshPositionY;
 
-    if (new_x < 0 || new_x >= MAP_WIDTH || new_y < 0 || new_y >= MAP_HEIGHT)
-    {
-        return false;
-    }
-
-    if (map[new_y][new_x] == 'X')
-    {
-        if (map[ashPosition.y][ashPosition.x] == ' ' || map[ashPosition.y][ashPosition.x] == 'P')
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    return true;
+    // Verifica si la nueva posición está dentro de los límites del mapa
+    return (newPosX >= 0 && newPosX < MAP_WIDTH && newPosY >= 0 && newPosY < MAP_HEIGHT && map[newPosY][newPosX] != 'X');
 }

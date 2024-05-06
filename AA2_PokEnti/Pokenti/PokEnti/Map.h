@@ -1,15 +1,16 @@
 #pragma once
 #include "Pokes.h"
 
-enum Region
+enum class Region
 {
     PUEBLO_PALETA,
     BOSQUE_VERDE,
     CIUDAD_CELESTE,
-    LIGA_POKENTI
+    LIGA_POKENTI,
+    COUNT
 };
 
-void printMap(Ash ashPosition, char map[MAP_HEIGHT][MAP_WIDTH], int pokedex)
+void printMap(Ash ashPosition, char** map, int pokedex)
 {
     system("cls");
 
@@ -29,10 +30,10 @@ void printMap(Ash ashPosition, char map[MAP_HEIGHT][MAP_WIDTH], int pokedex)
         std::cout << std::endl;
     }
 
-    std::cout << "Pokédex: " << pokedex << std::endl;
+    std::cout << "Pokedex: " << pokedex << std::endl;
 }
 
-void moveToNextRegion(Ash& ashPosition, Region& currentRegion, int pokedex, char map[MAP_HEIGHT][MAP_WIDTH])
+void moveToNextRegion(Ash& ashPosition, Region& currentRegion, int pokedex, char** map)
 {
     if (pokedex >= 5 && pokedex < 10)
     {
@@ -43,7 +44,7 @@ void moveToNextRegion(Ash& ashPosition, Region& currentRegion, int pokedex, char
                 map[i][j] = ' ';
             }
         }
-        currentRegion = BOSQUE_VERDE;
+        currentRegion = Region::BOSQUE_VERDE;
         generatePokes(map, MAP_WIDTH / 2 + 1, 0, MAP_WIDTH - 1, MAP_HEIGHT / 2 - 2);
     }
     else if (pokedex >= 10 && pokedex < 15)
@@ -55,7 +56,7 @@ void moveToNextRegion(Ash& ashPosition, Region& currentRegion, int pokedex, char
                 map[i][j] = ' ';
             }
         }
-        currentRegion = CIUDAD_CELESTE;
+        currentRegion = Region::CIUDAD_CELESTE;
         generatePokes(map, MAP_WIDTH / 2 + 1, MAP_HEIGHT / 2 + 1, MAP_WIDTH - 1, MAP_HEIGHT - 1); 
     }
     else if (pokedex >= 15)
@@ -67,7 +68,7 @@ void moveToNextRegion(Ash& ashPosition, Region& currentRegion, int pokedex, char
                 map[i][j] = ' ';
             }
         }
-        currentRegion = LIGA_POKENTI;
+        currentRegion = Region::LIGA_POKENTI;
      
         generatePokes(map, 0, MAP_HEIGHT / 2 + 1, MAP_WIDTH / 2 - 2, MAP_HEIGHT - 1);
     }

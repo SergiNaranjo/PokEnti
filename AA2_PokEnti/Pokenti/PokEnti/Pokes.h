@@ -3,13 +3,13 @@
 #include "Ash.h"
 #include <cstdlib>
 
-void generatePokes(char map[MAP_HEIGHT][MAP_WIDTH], int startX, int startY, int endX, int endY)
+void generatePokes(char** map, int startX, int startY, int endX, int endY)
 {
     for (int i = 0; i < 5; ++i)
     {
         int randX = startX + rand() % (endX - startX + 1);
         int randY = startY + rand() % (endY - startY + 1);
-   
+
         if (map[randY][randX] == ' ')
         {
             map[randY][randX] = 'P';
@@ -21,24 +21,25 @@ void generatePokes(char map[MAP_HEIGHT][MAP_WIDTH], int startX, int startY, int 
     }
 }
 
-void capturePokes(Ash ashPosition, char map[MAP_HEIGHT][MAP_WIDTH], int& pokedex)
+
+void capturePokes(Ash ashPosition, char** map, int& pokedex)
 {
-    if (map[ashPosition.y - 1][ashPosition.x] == 'P')
+    if (ashPosition.y > 0 && map[ashPosition.y - 1][ashPosition.x] == 'P')
     {
         map[ashPosition.y - 1][ashPosition.x] = ' ';
         pokedex++;
     }
-    if (map[ashPosition.y + 1][ashPosition.x] == 'P')
+    if (ashPosition.y < MAP_HEIGHT - 1 && map[ashPosition.y + 1][ashPosition.x] == 'P')
     {
         map[ashPosition.y + 1][ashPosition.x] = ' ';
         pokedex++;
     }
-    if (map[ashPosition.y][ashPosition.x - 1] == 'P')
+    if (ashPosition.x > 0 && map[ashPosition.y][ashPosition.x - 1] == 'P')
     {
         map[ashPosition.y][ashPosition.x - 1] = ' ';
         pokedex++;
     }
-    if (map[ashPosition.y][ashPosition.x + 1] == 'P')
+    if (ashPosition.x < MAP_WIDTH - 1 && map[ashPosition.y][ashPosition.x + 1] == 'P')
     {
         map[ashPosition.y][ashPosition.x + 1] = ' ';
         pokedex++;

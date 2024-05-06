@@ -9,25 +9,25 @@
 
 int main()
 {
-    Ash ashPosition = { 0, 0 };        
-    int pokedex = 0;                       
-    Region currentRegion = PUEBLO_PALETA;      
+    Ash ashPosition = { 0, 0 };       
+    int pokedex = 0;                    
+    Region currentRegion = Region::PUEBLO_PALETA;    
 
   
     srand(time(nullptr));
 
-    char map[MAP_HEIGHT][MAP_WIDTH]; 
 
-    
+    char** map = new char* [MAP_HEIGHT];
+
     for (int i = 0; i < MAP_HEIGHT; ++i)
     {
+        map[i] = new char[MAP_WIDTH];
         for (int j = 0; j < MAP_WIDTH; ++j)
         {
             map[i][j] = ' ';
         }
     }
 
-  
     for (int i = 0; i < MAP_HEIGHT; ++i)
     {
         for (int j = 0; j < MAP_WIDTH; ++j)
@@ -39,18 +39,15 @@ int main()
         }
     }
 
-
     generatePokes(map, 0, 0, MAP_WIDTH / 2 - 2, MAP_HEIGHT / 2 - 2);
 
-  
     while (true)
     {
-        printMap(ashPosition, map, pokedex); 
+        printMap(ashPosition, map, pokedex);
 
-  
-        if ((currentRegion == PUEBLO_PALETA && pokedex == 5) ||
-            (currentRegion == BOSQUE_VERDE && pokedex == 10) ||
-            (currentRegion == CIUDAD_CELESTE && pokedex == 15))
+        if ((currentRegion == Region::PUEBLO_PALETA && pokedex == 5) ||
+            (currentRegion == Region::BOSQUE_VERDE && pokedex == 10) ||
+            (currentRegion == Region::CIUDAD_CELESTE && pokedex == 15))
         {
             moveToNextRegion(ashPosition, currentRegion, pokedex, map);
         }
@@ -70,7 +67,7 @@ int main()
             if (canMove(ashPosition, 0, 1, map))
                 ashPosition.y++;
         }
-        if (GetAsyncKeyState(VK_LEFT))
+        if (GetAsyncKeyState(VK_LEFT)) 
         {
             if (canMove(ashPosition, -1, 0, map))
                 ashPosition.x--;
@@ -91,6 +88,13 @@ int main()
 
         Sleep(100);
     }
+
+
+    for (int i = 0; i < MAP_HEIGHT; ++i)
+    {
+        delete[] map[i];
+    }
+    delete[] map;
 
     return 0;
 }
