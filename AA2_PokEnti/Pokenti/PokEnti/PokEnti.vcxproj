@@ -131,8 +131,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ash.h" />
+    <ClInclude Include="Combat.h" />
     <ClInclude Include="Conf.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="Menu.h" />
     <ClInclude Include="Pokes.h" />
     <ClInclude Include="Util.h" />
   </ItemGroup>

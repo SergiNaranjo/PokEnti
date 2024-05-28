@@ -49,10 +49,9 @@ void printMap(Ash ashPosition, char** map, int pokedex)
         {
             ashSymbol = '>';
         }
-        else
-        {
+       
             ashSymbol = 'A';
-        }
+        
     }
 
     for (int i = 0; i < MAP_HEIGHT; ++i)

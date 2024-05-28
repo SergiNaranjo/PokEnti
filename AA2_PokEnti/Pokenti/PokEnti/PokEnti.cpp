@@ -7,16 +7,27 @@
 #include "Ash.h"
 #include "Map.h"
 #include "Conf.h" // El header no funciona 
+#include "Menu.h"
+#include "Combat.h"
 
-int main()
+enum class Scenes
 {
-    Ash ashPosition = { 0, 0 };       
-    int pokedex = 0;                    
-    Region currentRegion = Region::PUEBLO_PALETA;    
+    MENU,
+    MAP,
+    COMBAT,
+    COUNT
+};
 
-  
-    srand(time(nullptr));
+struct SceneManager
+{
+    Scenes currentScene;
+};
 
+int Map()
+{
+    Ash ashPosition = { 0, 0 };
+    int pokedex = 0;
+    Region currentRegion = Region::PUEBLO_PALETA;
 
     char** map = new char* [MAP_HEIGHT];
 
@@ -58,36 +69,36 @@ int main()
             std::cout << "Felicidades, te has hecho con todos" << std::endl;
         }
 
-        if (GetAsyncKeyState(VK_UP)) 
+        if (GetAsyncKeyState(VK_UP))
         {
             if (canMove(ashPosition, 0, -1, map))
                 ashPosition.y--;
         }
-        if (GetAsyncKeyState(VK_DOWN)) 
+        if (GetAsyncKeyState(VK_DOWN))
         {
             if (canMove(ashPosition, 0, 1, map))
                 ashPosition.y++;
         }
-        if (GetAsyncKeyState(VK_LEFT)) 
+        if (GetAsyncKeyState(VK_LEFT))
         {
             if (canMove(ashPosition, -1, 0, map))
                 ashPosition.x--;
         }
-        if (GetAsyncKeyState(VK_RIGHT)) 
+        if (GetAsyncKeyState(VK_RIGHT))
         {
             if (canMove(ashPosition, 1, 0, map))
                 ashPosition.x++;
         }
-        if (GetAsyncKeyState(VK_SPACE)) 
+        if (GetAsyncKeyState(VK_SPACE))
         {
             capturePokes(ashPosition, map, pokedex);
         }
-        if (GetAsyncKeyState(VK_ESCAPE)) 
+        if (GetAsyncKeyState(VK_ESCAPE))
         {
             return 0;
         }
 
-        Sleep(100);
+        Sleep(NUM_FPS);
     }
 
 
@@ -96,9 +107,68 @@ int main()
         delete[] map[i];
     }
     delete[] map;
-
-    return 0;
 }
+
+int main()
+{
+    SceneManager scenes;
+    scenes.currentScene = Scenes::MENU;
+
+  
+    srand(time(nullptr));
+
+    switch (scenes.currentScene)
+    {
+    case Scenes::MENU:
+        MainMenu();
+
+        int menuDecision;
+        std::cin >> menuDecision;
+
+        if (menuDecision == 1)
+        {
+            scenes.currentScene = Scenes::MAP;
+        }
+        else if (menuDecision == 2)
+        {
+            return -1;
+        }
+
+    case Scenes::MAP:
+        Map();
+
+        if (GetAsyncKeyState(VK_SPACE))
+        {
+            scenes.currentScene = Scenes::COMBAT;
+        }
+
+        break;
+
+    case Scenes::COMBAT:
+        CombatOptions();
+
+        int combatDecision;
+        std::cin >> combatDecision;
+
+        if (combatDecision == 1)
+        {
+            // LOGICA DE VIDA DE LOS POKEMON
+        }
+        else if (combatDecision == 2)
+        {
+
+        }
+        else if (combatDecision == 3)
+        {
+            scenes.currentScene = Scenes::MAP;
+        }
+
+        break;
+
+    }
+}
+
+
 
 
 
