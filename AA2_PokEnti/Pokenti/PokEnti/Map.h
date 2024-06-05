@@ -1,5 +1,6 @@
 #pragma once
 #include "Pokes.h"
+#include "Util.h"
 
 enum class Region
 {
@@ -75,7 +76,7 @@ void printMap(Ash ashPosition, char** map, int pokedex)
 
 void moveToNextRegion(Ash& ashPosition, Region& currentRegion, int pokedex, char** map)
 {
-    if (pokedex >= 5 && pokedex < 10)
+    if (pokedex >= MIN_POKES && pokedex < MIN_POKES*2)
     {
         for (int i = 0; i <= MAP_HEIGHT / 2 - 2; ++i)
         {
@@ -87,7 +88,7 @@ void moveToNextRegion(Ash& ashPosition, Region& currentRegion, int pokedex, char
         currentRegion = Region::BOSQUE_VERDE;
         generatePokes(map, MAP_WIDTH / 2 + 1, 0, MAP_WIDTH - 1, MAP_HEIGHT / 2 - 2);
     }
-    else if (pokedex >= 10 && pokedex < 15)
+    else if (pokedex >= MIN_POKES * 2 && pokedex < MIN_POKES*3)
     {
         for (int i = 0; i <= MAP_HEIGHT / 2; ++i)
         {
@@ -99,7 +100,7 @@ void moveToNextRegion(Ash& ashPosition, Region& currentRegion, int pokedex, char
         currentRegion = Region::CIUDAD_CELESTE;
         generatePokes(map, MAP_WIDTH / 2 + 1, MAP_HEIGHT / 2 + 1, MAP_WIDTH - 1, MAP_HEIGHT - 1); 
     }
-    else if (pokedex >= 15)
+    else if (pokedex >= MIN_POKES*3)
     {
         for (int i = 0; i <= MAP_HEIGHT; ++i)
         {

@@ -9,25 +9,18 @@
 #include "Conf.h" // El header no funciona 
 #include "Menu.h"
 #include "Combat.h"
+#include "Util.h"
+#include "SceneManager.h"
 
-enum class Scenes
-{
-    MENU,
-    MAP,
-    COMBAT,
-    COUNT
-};
 
-struct SceneManager
-{
-    Scenes currentScene;
-};
 
 int Map()
 {
     Ash ashPosition = { 0, 0 };
     int pokedex = 0;
     Region currentRegion = Region::PUEBLO_PALETA;
+    SceneManager scene;
+    scene.currentScene = Scenes::MAP;
 
     char** map = new char* [MAP_HEIGHT];
 
@@ -46,7 +39,7 @@ int Map()
         {
             if (j == MAP_WIDTH / 2 - 1 || j == MAP_WIDTH / 2 || i == MAP_HEIGHT / 2 - 1 || i == MAP_HEIGHT / 2)
             {
-                map[i][j] = 'X';
+                map[i][j] = WALLS;
             }
         }
     }
@@ -57,9 +50,9 @@ int Map()
     {
         printMap(ashPosition, map, pokedex);
 
-        if ((currentRegion == Region::PUEBLO_PALETA && pokedex == 5) ||
-            (currentRegion == Region::BOSQUE_VERDE && pokedex == 10) ||
-            (currentRegion == Region::CIUDAD_CELESTE && pokedex == 15))
+        if ((currentRegion == Region::PUEBLO_PALETA && pokedex == MIN_POKES) ||
+            (currentRegion == Region::BOSQUE_VERDE && pokedex == MIN_POKES * 2) ||
+            (currentRegion == Region::CIUDAD_CELESTE && pokedex == MIN_POKES * 3))
         {
             moveToNextRegion(ashPosition, currentRegion, pokedex, map);
         }
@@ -91,14 +84,14 @@ int Map()
         }
         if (GetAsyncKeyState(VK_SPACE))
         {
-            capturePokes(ashPosition, map, pokedex);
+            capturePokes(ashPosition, map, pokedex, scene);
         }
         if (GetAsyncKeyState(VK_ESCAPE))
         {
             return 0;
         }
 
-        Sleep(NUM_FPS);
+        Sleep(1000/NUM_FPS);
     }
 
 
@@ -137,11 +130,6 @@ int main()
     case Scenes::MAP:
         Map();
 
-        if (GetAsyncKeyState(VK_SPACE))
-        {
-            scenes.currentScene = Scenes::COMBAT;
-        }
-
         break;
 
     case Scenes::COMBAT:
@@ -156,7 +144,7 @@ int main()
         }
         else if (combatDecision == 2)
         {
-
+            
         }
         else if (combatDecision == 3)
         {
