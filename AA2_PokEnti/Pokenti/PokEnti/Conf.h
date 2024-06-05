@@ -15,7 +15,7 @@ struct Config {
     int pokemonsRequeridosBosque;
 };
 
-bool leerConfig(const std::string& nombreArchivo, Config& config) {
+bool LeerConfig(const std::string& nombreArchivo, Config& config) {
     std::ifstream configFile(nombreArchivo);
     if (!configFile.is_open()) {
         std::cerr << "No se pudo abrir el archivo de configuración." << std::endl;
@@ -23,7 +23,7 @@ bool leerConfig(const std::string& nombreArchivo, Config& config) {
     }
 
     std::string line;
-    // Leer y procesar la primera línea (ancho y alto del mapa)
+    
     if (std::getline(configFile, line)) {
         std::stringstream ss(line);
         std::string temp;
@@ -35,7 +35,7 @@ bool leerConfig(const std::string& nombreArchivo, Config& config) {
         }
     }
 
-    // Leer y procesar la segunda línea (Pokémons en Pueblo Paleta y requeridos)
+    
     if (std::getline(configFile, line)) {
         std::stringstream ss(line);
         std::string temp;
@@ -47,7 +47,7 @@ bool leerConfig(const std::string& nombreArchivo, Config& config) {
         }
     }
 
-    // Leer y procesar la tercera línea (Pokémons en el Bosque y requeridos)
+  
     if (std::getline(configFile, line)) {
         std::stringstream ss(line);
         std::string temp;
@@ -59,7 +59,7 @@ bool leerConfig(const std::string& nombreArchivo, Config& config) {
         }
     }
 
-    // Cerrar el archivo de configuración
+    
     configFile.close();
     return true;
 }

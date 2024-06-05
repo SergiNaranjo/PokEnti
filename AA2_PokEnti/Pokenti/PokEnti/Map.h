@@ -11,7 +11,7 @@ enum class Region
     COUNT
 };
 
-void printMap(Ash ashPosition, char** map, int pokedex)
+void PrintMap(Ash ashPosition, char** map, int pokedex)
 {
     system("cls");
 
@@ -34,19 +34,19 @@ void printMap(Ash ashPosition, char** map, int pokedex)
     }
     else 
     {
-        if (ashPosition.lastDirection == ashDirection::UP)
+        if (ashPosition.lastDirection == AshDirection::UP)
         {
             ashSymbol = '^';
         }
-        else if (ashPosition.lastDirection == ashDirection::DOWN)
+        else if (ashPosition.lastDirection == AshDirection::DOWN)
         {
             ashSymbol = 'v';
         }  
-        else if (ashPosition.lastDirection == ashDirection::LEFT)
+        else if (ashPosition.lastDirection == AshDirection::LEFT)
         {
             ashSymbol = '<';
         }   
-        else if (ashPosition.lastDirection == ashDirection::RIGHT)
+        else if (ashPosition.lastDirection == AshDirection::RIGHT)
         {
             ashSymbol = '>';
         }
@@ -74,7 +74,7 @@ void printMap(Ash ashPosition, char** map, int pokedex)
     std::cout << "Pokedex: " << pokedex << std::endl;
 }
 
-void moveToNextRegion(Ash& ashPosition, Region& currentRegion, int pokedex, char** map)
+void MoveToNextRegion(Ash& ashPosition, Region& currentRegion, int pokedex, char** map)
 {
     if (pokedex >= MIN_POKES && pokedex < MIN_POKES*2)
     {
@@ -86,7 +86,7 @@ void moveToNextRegion(Ash& ashPosition, Region& currentRegion, int pokedex, char
             }
         }
         currentRegion = Region::BOSQUE_VERDE;
-        generatePokes(map, MAP_WIDTH / 2 + 1, 0, MAP_WIDTH - 1, MAP_HEIGHT / 2 - 2);
+        GeneratePokes(map, MAP_WIDTH / 2 + 1, 0, MAP_WIDTH - 1, MAP_HEIGHT / 2 - 2);
     }
     else if (pokedex >= MIN_POKES * 2 && pokedex < MIN_POKES*3)
     {
@@ -98,19 +98,19 @@ void moveToNextRegion(Ash& ashPosition, Region& currentRegion, int pokedex, char
             }
         }
         currentRegion = Region::CIUDAD_CELESTE;
-        generatePokes(map, MAP_WIDTH / 2 + 1, MAP_HEIGHT / 2 + 1, MAP_WIDTH - 1, MAP_HEIGHT - 1); 
+        GeneratePokes(map, MAP_WIDTH / 2 + 1, MAP_HEIGHT / 2 + 1, MAP_WIDTH - 1, MAP_HEIGHT - 1);
     }
     else if (pokedex >= MIN_POKES*3)
     {
-        for (int i = 0; i <= MAP_HEIGHT; ++i)
+        for (int i = 0; i < MAP_HEIGHT; ++i)
         {
-            for (int j = MAP_WIDTH / 2 - 1; j <= MAP_WIDTH / 2; ++j)
+            for (int j = MAP_WIDTH / 2 - 1; j < MAP_WIDTH; ++j)
             {
                 map[i][j] = ' ';
             }
         }
         currentRegion = Region::LIGA_POKENTI;
      
-        generatePokes(map, 0, MAP_HEIGHT / 2 + 1, MAP_WIDTH / 2 - 2, MAP_HEIGHT - 1);
+        GeneratePokes(map, 0, MAP_HEIGHT / 2 + 1, MAP_WIDTH / 2 - 2, MAP_HEIGHT - 1);
     }
 }

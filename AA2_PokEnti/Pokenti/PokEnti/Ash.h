@@ -1,7 +1,7 @@
 #pragma once
 #include "Util.h"
 
-enum class ashDirection
+enum class AshDirection
 {
     UP,
     DOWN,
@@ -14,12 +14,12 @@ struct Ash
 {
     int x;
     int y;
-    ashDirection lastDirection;
+    AshDirection lastDirection;
 };
 
-bool canMove(Ash ashPosition, int newAshPositionX, int newAshPositionY, char** map)
+bool CanMove(Ash ashPosition, int newAshPositionX, int newAshPositionY, char** map)
 {
-    // Nueva posición
+    
     int newPosX = ashPosition.x + newAshPositionX;
     int newPosY = ashPosition.y + newAshPositionY;
 

@@ -3,11 +3,12 @@
 #include "Ash.h"
 #include "Combat.h"
 #include "SceneManager.h"
+#include "Map.h"
 #include <cstdlib>
 
-void generatePokes(char** map, int startX, int startY, int endX, int endY)
+void GeneratePokes(char** map, int startX, int startY, int endX, int endY)
 {
-    for (int i = 0; i < 5; ++i)
+    for (int i = 0; i < MIN_POKES; ++i)
     {
         int randX = startX + rand() % (endX - startX + 1);
         int randY = startY + rand() % (endY - startY + 1);
@@ -18,13 +19,13 @@ void generatePokes(char** map, int startX, int startY, int endX, int endY)
         }
         else
         {
-            --i; 
+            --i;
         }
     }
 }
 
 
-void capturePokes(Ash ashPosition, char** map, int& pokedex, SceneManager currentScene)
+void CapturePokes(Ash ashPosition, char** map, int& pokedex, SceneManager currentScene)
 {
     if (ashPosition.y > 0 && map[ashPosition.y - 1][ashPosition.x] == POKES)
     {
