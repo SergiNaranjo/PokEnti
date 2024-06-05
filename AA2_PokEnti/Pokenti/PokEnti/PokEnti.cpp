@@ -107,6 +107,20 @@ int main()
     SceneManager scenes;
     scenes.currentScene = Scenes::MENU;
 
+    Config config;
+    // Llamar a la función para leer la configuración
+    if (leerConfig("config.txt", config)) {
+        // Imprimir los valores leídos para verificar
+        std::cout << "Ancho del mapa: " << config.ancho << std::endl;
+        std::cout << "Alto del mapa: " << config.alto << std::endl;
+        std::cout << "Pokémons en Pueblo Paleta: " << config.pokemonsPueblo << std::endl;
+        std::cout << "Pokémons requeridos en Pueblo Paleta: " << config.pokemonsRequeridosPueblo << std::endl;
+        std::cout << "Pokémons en el Bosque: " << config.pokemonsBosque << std::endl;
+        std::cout << "Pokémons requeridos en el Bosque: " << config.pokemonsRequeridosBosque << std::endl;
+    }
+    else {
+        std::cerr << "Error al leer la configuración." << std::endl;
+    }
   
     srand(time(nullptr));
 

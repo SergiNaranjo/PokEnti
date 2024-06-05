@@ -3,29 +3,63 @@
 #include <fstream>
 #include <vector>
 #include <string>
+#include <sstream>
 
-// No funciona pero hay estructura
 
-std::vector<int> leerValoresDesdeArchivo(const std::string& nombreArchivo) {
-    std::vector<int> valores;
-    std::ifstream archivo(nombreArchivo);
-    if (archivo.is_open()) {
-        std::string linea;
-        while (std::getline(archivo, linea)) {
-            try {
-                int valor = std::stoi(linea);
-                valores.push_back(valor);
-            }
-            catch (const std::invalid_argument& e) {
-                std::cerr << "Error: El archivo contiene valores no numéricos.\n";
-                return {};
-            }
+struct Config {
+    int ancho;
+    int alto;
+    int pokemonsPueblo;
+    int pokemonsRequeridosPueblo;
+    int pokemonsBosque;
+    int pokemonsRequeridosBosque;
+};
+
+bool leerConfig(const std::string& nombreArchivo, Config& config) {
+    std::ifstream configFile(nombreArchivo);
+    if (!configFile.is_open()) {
+        std::cerr << "No se pudo abrir el archivo de configuración." << std::endl;
+        return false;
+    }
+
+    std::string line;
+    // Leer y procesar la primera línea (ancho y alto del mapa)
+    if (std::getline(configFile, line)) {
+        std::stringstream ss(line);
+        std::string temp;
+        if (std::getline(ss, temp, ';')) {
+            config.ancho = std::stoi(temp);
         }
-        archivo.close();
+        if (std::getline(ss, temp, ';')) {
+            config.alto = std::stoi(temp);
+        }
     }
-    else {
-        std::cerr << "Error: No se pudo abrir el archivo " << nombreArchivo << "\n";
-        return {};
+
+    // Leer y procesar la segunda línea (Pokémons en Pueblo Paleta y requeridos)
+    if (std::getline(configFile, line)) {
+        std::stringstream ss(line);
+        std::string temp;
+        if (std::getline(ss, temp, ';')) {
+            config.pokemonsPueblo = std::stoi(temp);
+        }
+        if (std::getline(ss, temp, ';')) {
+            config.pokemonsRequeridosPueblo = std::stoi(temp);
+        }
     }
-    return valores;
+
+    // Leer y procesar la tercera línea (Pokémons en el Bosque y requeridos)
+    if (std::getline(configFile, line)) {
+        std::stringstream ss(line);
+        std::string temp;
+        if (std::getline(ss, temp, ';')) {
+            config.pokemonsBosque = std::stoi(temp);
+        }
+        if (std::getline(ss, temp, ';')) {
+            config.pokemonsRequeridosBosque = std::stoi(temp);
+        }
+    }
+
+    // Cerrar el archivo de configuración
+    configFile.close();
+    return true;
 }
