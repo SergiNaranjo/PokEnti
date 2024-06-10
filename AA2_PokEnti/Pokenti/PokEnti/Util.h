@@ -13,6 +13,9 @@ const int MIN_POKES = 5;
 
 const int NUM_FPS = 20;
 
+const int POKES_HEALTH = 100;
+const int MEWTWO_HEALTH = 300;
+
 const char WALLS = 'X';
 const char POKES = 'P';
 const char MEWTWO = 'M';

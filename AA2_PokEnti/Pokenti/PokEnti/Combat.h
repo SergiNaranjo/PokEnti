@@ -3,7 +3,6 @@
 
 void CombatOptions()
 {   
-	std::cout << "You found a wild Pokemon" << std::endl;
 	std::cout << std::endl;
 
 	std::cout << "Attack (1)" << std::endl;

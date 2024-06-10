@@ -13,6 +13,11 @@ struct Config {
     int pokemonsRequeridosPueblo;
     int pokemonsBosque;
     int pokemonsRequeridosBosque;
+    int potenciaPikachu;
+    int saludPokes;
+    int saludMewtwo;
+    int minTemp;
+    int maxTemp;
 };
 
 bool LeerConfig(const std::string& nombreArchivo, Config& config) {
@@ -33,6 +38,7 @@ bool LeerConfig(const std::string& nombreArchivo, Config& config) {
         if (std::getline(ss, temp, ';')) {
             config.alto = std::stoi(temp);
         }
+    
     }
 
     
@@ -59,6 +65,35 @@ bool LeerConfig(const std::string& nombreArchivo, Config& config) {
         }
     }
 
+    if (std::getline(configFile, line)) {
+        std::stringstream ss(line);
+        std::string temp;
+        if (std::getline(ss, temp, ';')) {
+            config.potenciaPikachu = std::stoi(temp);
+        }
+    }
+
+    if (std::getline(configFile, line)) {
+        std::stringstream ss(line);
+        std::string temp;
+        if (std::getline(ss, temp, ';')) {
+            config.saludPokes = std::stoi(temp);
+        }
+        if (std::getline(ss, temp, ';')) {
+            config.saludMewtwo = std::stoi(temp);
+        }
+    }
+
+    if (std::getline(configFile, line)) {
+        std::stringstream ss(line);
+        std::string temp;
+        if (std::getline(ss, temp, ';')) {
+            config.minTemp = std::stoi(temp);
+        }
+        if (std::getline(ss, temp, ';')) {
+            config.maxTemp = std::stoi(temp);
+        }
+    }
     
     configFile.close();
     return true;

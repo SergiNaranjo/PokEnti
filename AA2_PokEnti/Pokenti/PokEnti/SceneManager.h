@@ -5,6 +5,7 @@ enum class Scenes
     MENU,
     MAP,
     COMBAT,
+    GAMEOVER,
     COUNT
 };
 

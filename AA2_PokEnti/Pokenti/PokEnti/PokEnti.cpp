@@ -11,9 +11,10 @@
 #include "Combat.h"
 #include "Util.h"
 #include "SceneManager.h"
+#include "GameOver.h"
 
 int pokedex = 0;
-int pokeballs = 0;
+int pokeballs = 1;
 
 int Map()
 {
@@ -52,7 +53,7 @@ int Map()
 
     while (true)
     {
-        PrintMap(ashPosition, map, pokedex);
+        PrintMap(ashPosition, map, pokedex, pokeballs);
 
         if ((currentRegion == Region::PUEBLO_PALETA && pokedex == MIN_POKES) ||
             (currentRegion == Region::BOSQUE_VERDE && pokedex == MIN_POKES * 2) ||
@@ -88,7 +89,8 @@ int Map()
         }
         if (GetAsyncKeyState(VK_SPACE))
         {
-            CapturePokeballs(ashPosition, map, pokedex, scene, area1);
+            CapturePokeballs(ashPosition, map, pokeballs, scene, area1);
+            CapturePokes(ashPosition, map, pokedex, pokeballs, scene, area);
         }
         if (GetAsyncKeyState(VK_ESCAPE))
         {
@@ -139,6 +141,11 @@ int main()
                     std::cout << "Pokémons requeridos en Pueblo Paleta: " << config.pokemonsRequeridosPueblo << std::endl;
                     std::cout << "Pokémons en el Bosque: " << config.pokemonsBosque << std::endl;
                     std::cout << "Pokémons requeridos en el Bosque: " << config.pokemonsRequeridosBosque << std::endl;
+                    std::cout << "Poténcia ataque pikachu: " << config.potenciaPikachu << std::endl;
+                    std::cout << "Salud inicial Pokémons: " << config.saludPokes << std::endl;
+                    std::cout << "Salud Mewtwo: " << config.saludMewtwo << std::endl;
+                    std::cout << "Tiempo de espera min: " << config.minTemp << std::endl;
+                    std::cout << "Tiempo de espera max: " << config.maxTemp << std::endl;
                 }
                 else {
                     std::cerr << "Error al leer la configuración." << std::endl;
@@ -153,26 +160,18 @@ int main()
 
         case Scenes::MAP:
             Map();
-
-        case Scenes::COMBAT:
-            CombatOptions();
-
-            int combatDecision;
-            std::cin >> combatDecision;
-
-            if (combatDecision == 1)
-            {
-                // VIDA DE LOS POKEMON
-            }
-            else if (combatDecision == 2)
-            {
-                pokedex++;
-                std::cout << pokedex;
-            }
-            else if (combatDecision == 3)
-            {
-                Map();
-            }
+           
+            case Scenes::GAMEOVER:
+                GameOver();
+                int menuGameOver;
+                std::cin >> menuGameOver;
+                if (menuGameOver == 1) {
+                    Map();
+                }
+                else if (menuGameOver == 2) {
+                    return 0;
+                }
+                
         }
     }
 }

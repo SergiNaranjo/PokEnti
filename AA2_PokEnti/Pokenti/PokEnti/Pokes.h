@@ -13,6 +13,34 @@ struct Area {
     int endY;
 };
 
+enum class Pokes{
+    RATTATA, 
+    PIDGEY, 
+    CATERPIE,
+    MAGIKARP, 
+    PIKACHU, 
+    COUNT
+};
+
+const char* PokeToString(Pokes poke) {
+
+    switch (poke) {
+    case Pokes::RATTATA: return "RATTATA";
+    case Pokes::PIDGEY: return "PIDGEY";
+    case Pokes::CATERPIE: return "CATERPIE";
+    case Pokes::MAGIKARP: return "MAGIKARP";
+    case Pokes::PIKACHU: return "PIKACHU";
+    }
+}
+
+void GenerateRandomPokes() {
+    srand(time(NULL));
+    int randomIndex = rand() % static_cast<int>(Pokes::COUNT);
+    Pokes randomPoke = static_cast<Pokes>(randomIndex);
+
+
+}
+
 void GeneratePokeballs(char** map, Area& area)
 {
     for (int i = 0; i < MIN_POKES; ++i)
@@ -59,37 +87,148 @@ void ReGeneratePokes(char** map, const Area& area) {
     }
 }
 
-void CapturePokeballs(Ash ashPosition, char** map, int& pokes, SceneManager currentScene, Area& area)
+void CapturePokeballs(Ash ashPosition, char** map, int& pokeballs, SceneManager currentScene, Area& area)
 {
-    bool capturedPokes = false;
-
-    
+  
     if (ashPosition.y > 0 && map[ashPosition.y - 1][ashPosition.x] == POKEBALL)
     {
         map[ashPosition.y - 1][ashPosition.x] = ' ';
-        pokes++;
-        capturedPokes = true;
+        pokeballs++;
     }
     if (ashPosition.y < MAP_HEIGHT - 1 && map[ashPosition.y + 1][ashPosition.x] == POKEBALL)
     {
         map[ashPosition.y + 1][ashPosition.x] = ' ';
-        pokes++;
-        capturedPokes = true;
+        pokeballs++;
     }
     if (ashPosition.x > 0 && map[ashPosition.y][ashPosition.x - 1] == POKEBALL)
     {
         map[ashPosition.y][ashPosition.x - 1] = ' ';
-        pokes++;
-        capturedPokes = true;
+        pokeballs++;
     }
     if (ashPosition.x < MAP_WIDTH - 1 && map[ashPosition.y][ashPosition.x + 1] == POKEBALL)
     {
         map[ashPosition.y][ashPosition.x + 1] = ' ';
-        pokes++;
-        capturedPokes = true;
+        pokeballs++;
     }
-    if (capturedPokes) {
-        ReGeneratePokes(map, area);
+}
+
+void CapturePokes(Ash ashPosition, char** map, int& pokedex, int& pokeballs, SceneManager currentScene, Area& area)
+{
+    bool capturedPokes = false;
+    int actualHealth = 0;
+    srand(time(NULL));
+    int randomIndex = rand() % static_cast<int>(Pokes::COUNT);
+    Pokes randomPoke = static_cast<Pokes>(randomIndex);
+
+    if (pokeballs > 0) {
+        if (ashPosition.y > 0 && map[ashPosition.y - 1][ashPosition.x] == POKES)
+        {
+
+            std::cout << "You found a wild " << PokeToString(randomPoke) << std::endl;
+            CombatOptions();
+
+            int combatDecision;
+            std::cin >> combatDecision;
+
+            if (combatDecision == 1)
+            {
+                // VIDA DE LOS POKEMON
+            }
+            else if (combatDecision == 2)
+            {
+                map[ashPosition.y - 1][ashPosition.x] = ' ';
+                pokedex++;
+                std::cout << pokedex;
+                pokeballs--;
+                std::cout << pokeballs;
+            }
+            else if (combatDecision == 3)
+            {
+                currentScene.currentScene = Scenes::MAP;
+            }
+            capturedPokes = true;
+        }
+        if (ashPosition.y < MAP_HEIGHT - 1 && map[ashPosition.y + 1][ashPosition.x] == POKES)
+        {
+            std::cout << "You found a wild " << PokeToString(randomPoke) << std::endl;
+            CombatOptions();
+
+            int combatDecision;
+            std::cin >> combatDecision;
+
+            if (combatDecision == 1)
+            {
+                // VIDA DE LOS POKEMON
+            }
+            else if (combatDecision == 2)
+            {
+                map[ashPosition.y + 1][ashPosition.x] = ' ';
+                pokedex++;
+                std::cout << pokedex;
+                pokeballs--;
+                std::cout << pokeballs;
+            }
+            else if (combatDecision == 3)
+            {
+                currentScene.currentScene = Scenes::MAP;
+            }
+            capturedPokes = true;
+        }
+        if (ashPosition.x > 0 && map[ashPosition.y][ashPosition.x - 1] == POKES)
+        {
+            std::cout << "You found a wild " << PokeToString(randomPoke) << std::endl;
+            CombatOptions();
+
+            int combatDecision;
+            std::cin >> combatDecision;
+
+            if (combatDecision == 1)
+            {
+                // VIDA DE LOS POKEMON
+            }
+            else if (combatDecision == 2)
+            {
+                map[ashPosition.y][ashPosition.x - 1] = ' ';
+                pokedex++;
+                std::cout << pokedex;
+                pokeballs--;
+                std::cout << pokeballs;
+            }
+            else if (combatDecision == 3)
+            {
+                currentScene.currentScene = Scenes::MAP;
+            }
+            capturedPokes = true;
+        }
+        if (ashPosition.x < MAP_WIDTH - 1 && map[ashPosition.y][ashPosition.x + 1] == POKES)
+        {
+            std::cout << "You found a wild " << PokeToString(randomPoke) << std::endl;
+            CombatOptions();
+
+            int combatDecision;
+            std::cin >> combatDecision;
+
+            if (combatDecision == 1)
+            {
+                // VIDA DE LOS POKEMON
+            }
+            else if (combatDecision == 2)
+            {
+                map[ashPosition.y][ashPosition.x + 1] = ' ';
+                pokedex++;
+                std::cout << pokedex;
+                pokeballs--;
+                std::cout << pokeballs;
+            }
+            else if (combatDecision == 3)
+            {
+                currentScene.currentScene = Scenes::MAP;
+            }
+            capturedPokes = true;
+        }
+        if (capturedPokes) {
+            ReGeneratePokes(map, area);
+        }
     }
 }
 

@@ -11,9 +11,11 @@ enum class Region
     COUNT
 };
 
-void PrintMap(Ash ashPosition, char** map, int pokeballs)
+void PrintMap(Ash ashPosition, char** map, int pokedex, int pokeballs)
 {
     system("cls");
+
+    std::cout << "Pokedex: " << pokedex << "\tPokeballs: " << pokeballs << std::endl;
 
     char ashSymbol;
     if (GetAsyncKeyState(VK_UP)) 
@@ -70,8 +72,7 @@ void PrintMap(Ash ashPosition, char** map, int pokeballs)
         }
         std::cout << std::endl;
     }
-
-    std::cout << "Pokeballs: " << pokeballs << std::endl;
+    
 }
 
 void MoveToNextRegion(Ash& ashPosition, Region& currentRegion, int pokedex, char** map)
