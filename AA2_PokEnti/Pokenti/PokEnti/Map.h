@@ -86,7 +86,8 @@ void MoveToNextRegion(Ash& ashPosition, Region& currentRegion, int pokedex, char
             }
         }
         currentRegion = Region::BOSQUE_VERDE;
-        GeneratePokeballs(map, MAP_WIDTH / 2 + 1, 0, MAP_WIDTH - 1, MAP_HEIGHT / 2 - 2);
+        Area area = { MAP_WIDTH / 2 + 1, 0, MAP_WIDTH - 1, MAP_HEIGHT / 2 - 2 };
+        GeneratePokeballs(map, area);
     }
     else if (pokedex >= MIN_POKES * 2 && pokedex < MIN_POKES*3)
     {
@@ -98,7 +99,8 @@ void MoveToNextRegion(Ash& ashPosition, Region& currentRegion, int pokedex, char
             }
         }
         currentRegion = Region::CIUDAD_CELESTE;
-        GeneratePokeballs(map, MAP_WIDTH / 2 + 1, MAP_HEIGHT / 2 + 1, MAP_WIDTH - 1, MAP_HEIGHT - 1);
+        Area area = { MAP_WIDTH / 2 + 1, MAP_HEIGHT / 2 + 1, MAP_WIDTH - 1, MAP_HEIGHT - 1 };
+        GeneratePokeballs(map, area);
     }
     else if (pokedex >= MIN_POKES*3)
     {
@@ -110,7 +112,7 @@ void MoveToNextRegion(Ash& ashPosition, Region& currentRegion, int pokedex, char
             }
         }
         currentRegion = Region::LIGA_POKENTI;
-     
-        GeneratePokeballs(map, 0, MAP_HEIGHT / 2 + 1, MAP_WIDTH / 2 - 2, MAP_HEIGHT - 1);
+        Area area = { 0, MAP_HEIGHT / 2 + 1, MAP_WIDTH / 2 - 2, MAP_HEIGHT - 1 };
+        GeneratePokeballs(map, area);
     }
 }

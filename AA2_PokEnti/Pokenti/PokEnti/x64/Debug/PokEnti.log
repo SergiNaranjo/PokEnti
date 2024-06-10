@@ -1,3 +1,3 @@
 ﻿  PokEnti.cpp
-C:\Users\naran\Desktop\ZornozaHector_NaranjoSergi_AA2\AA2_PokEnti\Pokenti\PokEnti\PokEnti.cpp(114,15): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
-  PokEnti.vcxproj -> C:\Users\naran\Desktop\ZornozaHector_NaranjoSergi_AA2\AA2_PokEnti\Pokenti\x64\Debug\PokEnti.exe
+C:\Users\hecto\Desktop\PokEnti\AA2_PokEnti\Pokenti\PokEnti\PokEnti.cpp(116,15): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
+  PokEnti.vcxproj -> C:\Users\hecto\Desktop\PokEnti\AA2_PokEnti\Pokenti\x64\Debug\PokEnti.exe

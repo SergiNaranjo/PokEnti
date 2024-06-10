@@ -20,6 +20,7 @@ int Map()
     Ash ashPosition = { 0, 0 };
     Region currentRegion = Region::PUEBLO_PALETA;
     SceneManager scene;
+    Area area, area1;
     scene.currentScene = Scenes::MAP;
 
     char** map = new char* [MAP_HEIGHT];
@@ -44,9 +45,10 @@ int Map()
             }
         }
     }
-
-    GeneratePokes(map, 0, 0, MAP_WIDTH / 2 - 2, MAP_HEIGHT / 2 - 2);
-    GeneratePokeballs(map, 0, 0, MAP_WIDTH / 2 - 2, MAP_HEIGHT / 2 - 2);
+    area = { 0, 0, MAP_WIDTH / 2 - 2, MAP_HEIGHT / 2 - 2 };
+    GeneratePokes(map, area);
+    area1 = { 0, 0, MAP_WIDTH / 2 - 2, MAP_HEIGHT / 2 - 2 };
+    GeneratePokeballs(map, area1);
 
     while (true)
     {
@@ -86,7 +88,7 @@ int Map()
         }
         if (GetAsyncKeyState(VK_SPACE))
         {
-            CapturePokeballs(ashPosition, map, pokedex, scene);
+            CapturePokeballs(ashPosition, map, pokedex, scene, area1);
         }
         if (GetAsyncKeyState(VK_ESCAPE))
         {
