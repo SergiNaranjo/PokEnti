@@ -13,6 +13,7 @@
 #include "SceneManager.h"
 
 int pokedex = 0;
+int pokeballs = 0;
 
 int Map()
 {
@@ -45,6 +46,7 @@ int Map()
     }
 
     GeneratePokes(map, 0, 0, MAP_WIDTH / 2 - 2, MAP_HEIGHT / 2 - 2);
+    GeneratePokeballs(map, 0, 0, MAP_WIDTH / 2 - 2, MAP_HEIGHT / 2 - 2);
 
     while (true)
     {
@@ -84,7 +86,7 @@ int Map()
         }
         if (GetAsyncKeyState(VK_SPACE))
         {
-            CapturePokes(ashPosition, map, pokedex, scene);
+            CapturePokeballs(ashPosition, map, pokedex, scene);
         }
         if (GetAsyncKeyState(VK_ESCAPE))
         {

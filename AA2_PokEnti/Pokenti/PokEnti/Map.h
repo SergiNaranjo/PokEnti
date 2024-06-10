@@ -11,7 +11,7 @@ enum class Region
     COUNT
 };
 
-void PrintMap(Ash ashPosition, char** map, int pokedex)
+void PrintMap(Ash ashPosition, char** map, int pokeballs)
 {
     system("cls");
 
@@ -71,7 +71,7 @@ void PrintMap(Ash ashPosition, char** map, int pokedex)
         std::cout << std::endl;
     }
 
-    std::cout << "Pokedex: " << pokedex << std::endl;
+    std::cout << "Pokeballs: " << pokeballs << std::endl;
 }
 
 void MoveToNextRegion(Ash& ashPosition, Region& currentRegion, int pokedex, char** map)
@@ -86,7 +86,7 @@ void MoveToNextRegion(Ash& ashPosition, Region& currentRegion, int pokedex, char
             }
         }
         currentRegion = Region::BOSQUE_VERDE;
-        GeneratePokes(map, MAP_WIDTH / 2 + 1, 0, MAP_WIDTH - 1, MAP_HEIGHT / 2 - 2);
+        GeneratePokeballs(map, MAP_WIDTH / 2 + 1, 0, MAP_WIDTH - 1, MAP_HEIGHT / 2 - 2);
     }
     else if (pokedex >= MIN_POKES * 2 && pokedex < MIN_POKES*3)
     {
@@ -98,7 +98,7 @@ void MoveToNextRegion(Ash& ashPosition, Region& currentRegion, int pokedex, char
             }
         }
         currentRegion = Region::CIUDAD_CELESTE;
-        GeneratePokes(map, MAP_WIDTH / 2 + 1, MAP_HEIGHT / 2 + 1, MAP_WIDTH - 1, MAP_HEIGHT - 1);
+        GeneratePokeballs(map, MAP_WIDTH / 2 + 1, MAP_HEIGHT / 2 + 1, MAP_WIDTH - 1, MAP_HEIGHT - 1);
     }
     else if (pokedex >= MIN_POKES*3)
     {
@@ -111,6 +111,6 @@ void MoveToNextRegion(Ash& ashPosition, Region& currentRegion, int pokedex, char
         }
         currentRegion = Region::LIGA_POKENTI;
      
-        GeneratePokes(map, 0, MAP_HEIGHT / 2 + 1, MAP_WIDTH / 2 - 2, MAP_HEIGHT - 1);
+        GeneratePokeballs(map, 0, MAP_HEIGHT / 2 + 1, MAP_WIDTH / 2 - 2, MAP_HEIGHT - 1);
     }
 }

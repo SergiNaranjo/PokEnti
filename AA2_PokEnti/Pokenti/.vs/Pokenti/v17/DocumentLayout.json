@@ -3,6 +3,26 @@
   "WorkspaceRootPath": "C:\\Users\\naran\\Desktop\\ZornozaHector_NaranjoSergi_AA2\\AA2_PokEnti\\Pokenti\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{E3DFC763-14DF-43A5-92D1-35C49411DAFF}|PokEnti\\PokEnti.vcxproj|C:\\Users\\naran\\Desktop\\ZornozaHector_NaranjoSergi_AA2\\AA2_PokEnti\\Pokenti\\PokEnti\\Pokes.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E3DFC763-14DF-43A5-92D1-35C49411DAFF}|PokEnti\\PokEnti.vcxproj|solutionrelative:PokEnti\\Pokes.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E3DFC763-14DF-43A5-92D1-35C49411DAFF}|PokEnti\\PokEnti.vcxproj|C:\\Users\\naran\\Desktop\\ZornozaHector_NaranjoSergi_AA2\\AA2_PokEnti\\Pokenti\\PokEnti\\PokEnti.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E3DFC763-14DF-43A5-92D1-35C49411DAFF}|PokEnti\\PokEnti.vcxproj|solutionrelative:PokEnti\\PokEnti.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E3DFC763-14DF-43A5-92D1-35C49411DAFF}|PokEnti\\PokEnti.vcxproj|C:\\Users\\naran\\Desktop\\ZornozaHector_NaranjoSergi_AA2\\AA2_PokEnti\\Pokenti\\PokEnti\\Map.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E3DFC763-14DF-43A5-92D1-35C49411DAFF}|PokEnti\\PokEnti.vcxproj|solutionrelative:PokEnti\\Map.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E3DFC763-14DF-43A5-92D1-35C49411DAFF}|PokEnti\\PokEnti.vcxproj|C:\\Users\\naran\\Desktop\\ZornozaHector_NaranjoSergi_AA2\\AA2_PokEnti\\Pokenti\\PokEnti\\Ash.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E3DFC763-14DF-43A5-92D1-35C49411DAFF}|PokEnti\\PokEnti.vcxproj|solutionrelative:PokEnti\\Ash.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E3DFC763-14DF-43A5-92D1-35C49411DAFF}|PokEnti\\PokEnti.vcxproj|C:\\Users\\naran\\Desktop\\ZornozaHector_NaranjoSergi_AA2\\AA2_PokEnti\\Pokenti\\PokEnti\\Util.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E3DFC763-14DF-43A5-92D1-35C49411DAFF}|PokEnti\\PokEnti.vcxproj|solutionrelative:PokEnti\\Util.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{E3DFC763-14DF-43A5-92D1-35C49411DAFF}|PokEnti\\PokEnti.vcxproj|C:\\Users\\naran\\Desktop\\ZornozaHector_NaranjoSergi_AA2\\AA2_PokEnti\\Pokenti\\PokEnti\\Combat.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{E3DFC763-14DF-43A5-92D1-35C49411DAFF}|PokEnti\\PokEnti.vcxproj|solutionrelative:PokEnti\\Combat.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -11,28 +31,8 @@
       "RelativeMoniker": "D:0:0:{E3DFC763-14DF-43A5-92D1-35C49411DAFF}|PokEnti\\PokEnti.vcxproj|solutionrelative:PokEnti\\Menu.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E3DFC763-14DF-43A5-92D1-35C49411DAFF}|PokEnti\\PokEnti.vcxproj|C:\\Users\\naran\\Desktop\\ZornozaHector_NaranjoSergi_AA2\\AA2_PokEnti\\Pokenti\\PokEnti\\Map.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{E3DFC763-14DF-43A5-92D1-35C49411DAFF}|PokEnti\\PokEnti.vcxproj|solutionrelative:PokEnti\\Map.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E3DFC763-14DF-43A5-92D1-35C49411DAFF}|PokEnti\\PokEnti.vcxproj|C:\\Users\\naran\\Desktop\\ZornozaHector_NaranjoSergi_AA2\\AA2_PokEnti\\Pokenti\\PokEnti\\Util.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{E3DFC763-14DF-43A5-92D1-35C49411DAFF}|PokEnti\\PokEnti.vcxproj|solutionrelative:PokEnti\\Util.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E3DFC763-14DF-43A5-92D1-35C49411DAFF}|PokEnti\\PokEnti.vcxproj|C:\\Users\\naran\\Desktop\\ZornozaHector_NaranjoSergi_AA2\\AA2_PokEnti\\Pokenti\\PokEnti\\PokEnti.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{E3DFC763-14DF-43A5-92D1-35C49411DAFF}|PokEnti\\PokEnti.vcxproj|solutionrelative:PokEnti\\PokEnti.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E3DFC763-14DF-43A5-92D1-35C49411DAFF}|PokEnti\\PokEnti.vcxproj|C:\\Users\\naran\\Desktop\\ZornozaHector_NaranjoSergi_AA2\\AA2_PokEnti\\Pokenti\\PokEnti\\Pokes.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{E3DFC763-14DF-43A5-92D1-35C49411DAFF}|PokEnti\\PokEnti.vcxproj|solutionrelative:PokEnti\\Pokes.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E3DFC763-14DF-43A5-92D1-35C49411DAFF}|PokEnti\\PokEnti.vcxproj|C:\\Users\\naran\\Desktop\\ZornozaHector_NaranjoSergi_AA2\\AA2_PokEnti\\Pokenti\\PokEnti\\Conf.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{E3DFC763-14DF-43A5-92D1-35C49411DAFF}|PokEnti\\PokEnti.vcxproj|solutionrelative:PokEnti\\Conf.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E3DFC763-14DF-43A5-92D1-35C49411DAFF}|PokEnti\\PokEnti.vcxproj|C:\\Users\\naran\\Desktop\\ZornozaHector_NaranjoSergi_AA2\\AA2_PokEnti\\Pokenti\\PokEnti\\Ash.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{E3DFC763-14DF-43A5-92D1-35C49411DAFF}|PokEnti\\PokEnti.vcxproj|solutionrelative:PokEnti\\Ash.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,56 +42,56 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 5,
               "Title": "Combat.h",
               "DocumentMoniker": "C:\\Users\\naran\\Desktop\\ZornozaHector_NaranjoSergi_AA2\\AA2_PokEnti\\Pokenti\\PokEnti\\Combat.h",
               "RelativeDocumentMoniker": "PokEnti\\Combat.h",
               "ToolTip": "C:\\Users\\naran\\Desktop\\ZornozaHector_NaranjoSergi_AA2\\AA2_PokEnti\\Pokenti\\PokEnti\\Combat.h",
               "RelativeToolTip": "PokEnti\\Combat.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAYAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-05-28T18:04:03.512Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "Menu.h",
               "DocumentMoniker": "C:\\Users\\naran\\Desktop\\ZornozaHector_NaranjoSergi_AA2\\AA2_PokEnti\\Pokenti\\PokEnti\\Menu.h",
               "RelativeDocumentMoniker": "PokEnti\\Menu.h",
               "ToolTip": "C:\\Users\\naran\\Desktop\\ZornozaHector_NaranjoSergi_AA2\\AA2_PokEnti\\Pokenti\\PokEnti\\Menu.h",
               "RelativeToolTip": "PokEnti\\Menu.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAABAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-05-28T17:41:41.419Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "Conf.h",
               "DocumentMoniker": "C:\\Users\\naran\\Desktop\\ZornozaHector_NaranjoSergi_AA2\\AA2_PokEnti\\Pokenti\\PokEnti\\Conf.h",
               "RelativeDocumentMoniker": "PokEnti\\Conf.h",
               "ToolTip": "C:\\Users\\naran\\Desktop\\ZornozaHector_NaranjoSergi_AA2\\AA2_PokEnti\\Pokenti\\PokEnti\\Conf.h",
               "RelativeToolTip": "PokEnti\\Conf.h",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAYAAAAiAAAA",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAYAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-05-28T17:36:04.87Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
               "Title": "Pokes.h",
               "DocumentMoniker": "C:\\Users\\naran\\Desktop\\ZornozaHector_NaranjoSergi_AA2\\AA2_PokEnti\\Pokenti\\PokEnti\\Pokes.h",
               "RelativeDocumentMoniker": "PokEnti\\Pokes.h",
               "ToolTip": "C:\\Users\\naran\\Desktop\\ZornozaHector_NaranjoSergi_AA2\\AA2_PokEnti\\Pokenti\\PokEnti\\Pokes.h",
               "RelativeToolTip": "PokEnti\\Pokes.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAQAAAA",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAAABgAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-05-28T17:36:04.97Z",
               "EditorCaption": ""
@@ -104,46 +104,46 @@
               "RelativeDocumentMoniker": "PokEnti\\Map.h",
               "ToolTip": "C:\\Users\\naran\\Desktop\\ZornozaHector_NaranjoSergi_AA2\\AA2_PokEnti\\Pokenti\\PokEnti\\Map.h",
               "RelativeToolTip": "PokEnti\\Map.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAGsAAAAAAAAA",
+              "ViewState": "AQIAADEAAAAAAAAAAAAAAF4AAAA5AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-05-28T17:36:04.971Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Util.h",
               "DocumentMoniker": "C:\\Users\\naran\\Desktop\\ZornozaHector_NaranjoSergi_AA2\\AA2_PokEnti\\Pokenti\\PokEnti\\Util.h",
               "RelativeDocumentMoniker": "PokEnti\\Util.h",
               "ToolTip": "C:\\Users\\naran\\Desktop\\ZornozaHector_NaranjoSergi_AA2\\AA2_PokEnti\\Pokenti\\PokEnti\\Util.h",
               "RelativeToolTip": "PokEnti\\Util.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAWAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-05-28T17:36:04.972Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "PokEnti.cpp",
               "DocumentMoniker": "C:\\Users\\naran\\Desktop\\ZornozaHector_NaranjoSergi_AA2\\AA2_PokEnti\\Pokenti\\PokEnti\\PokEnti.cpp",
               "RelativeDocumentMoniker": "PokEnti\\PokEnti.cpp",
               "ToolTip": "C:\\Users\\naran\\Desktop\\ZornozaHector_NaranjoSergi_AA2\\AA2_PokEnti\\Pokenti\\PokEnti\\PokEnti.cpp",
               "RelativeToolTip": "PokEnti\\PokEnti.cpp",
-              "ViewState": "AQIAAFoAAAAAAAAAAAAAAGQAAAAVAAAA",
+              "ViewState": "AQIAACMAAAAAAAAAAAAAAC8AAABEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-05-28T17:36:05.056Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 3,
               "Title": "Ash.h",
               "DocumentMoniker": "C:\\Users\\naran\\Desktop\\ZornozaHector_NaranjoSergi_AA2\\AA2_PokEnti\\Pokenti\\PokEnti\\Ash.h",
               "RelativeDocumentMoniker": "PokEnti\\Ash.h",
               "ToolTip": "C:\\Users\\naran\\Desktop\\ZornozaHector_NaranjoSergi_AA2\\AA2_PokEnti\\Pokenti\\PokEnti\\Ash.h",
               "RelativeToolTip": "PokEnti\\Ash.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAHAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-05-28T17:36:05.294Z",
               "EditorCaption": ""

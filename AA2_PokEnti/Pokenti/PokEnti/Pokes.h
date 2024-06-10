@@ -6,7 +6,7 @@
 #include "Map.h"
 #include <cstdlib>
 
-void GeneratePokes(char** map, int startX, int startY, int endX, int endY)
+void GeneratePokeballs(char** map, int startX, int startY, int endX, int endY)
 {
     for (int i = 0; i < MIN_POKES; ++i)
     {
@@ -15,7 +15,7 @@ void GeneratePokes(char** map, int startX, int startY, int endX, int endY)
 
         if (map[randY][randX] == ' ')
         {
-            map[randY][randX] = POKES;
+            map[randY][randX] = POKEBALL;
         }
         else
         {
@@ -24,31 +24,46 @@ void GeneratePokes(char** map, int startX, int startY, int endX, int endY)
     }
 }
 
-
-void CapturePokes(Ash ashPosition, char** map, int& pokedex, SceneManager currentScene)
+void GeneratePokes(char** map, int startX, int startY, int endX, int endY)
 {
-    if (ashPosition.y > 0 && map[ashPosition.y - 1][ashPosition.x] == POKES)
+    int randX = startX + rand() % (endX - startX + 1);
+    int randY = startY + rand() % (endY - startY + 1);
+
+    if (map[randY][randX] == ' ')
     {
-        currentScene.currentScene = Scenes::COMBAT;
+        map[randY][randX] = POKES;
+    }
+}
+
+
+void CapturePokeballs(Ash ashPosition, char** map, int& pokeballs, SceneManager currentScene)
+{
+    if (ashPosition.y > 0 && map[ashPosition.y - 1][ashPosition.x] == POKEBALL)
+    {
         map[ashPosition.y - 1][ashPosition.x] = ' ';
-        pokedex++;
+        pokeballs++;
     }
-    if (ashPosition.y < MAP_HEIGHT - 1 && map[ashPosition.y + 1][ashPosition.x] == POKES)
+    if (ashPosition.y < MAP_HEIGHT - 1 && map[ashPosition.y + 1][ashPosition.x] == POKEBALL)
     {
-        currentScene.currentScene = Scenes::COMBAT;
         map[ashPosition.y + 1][ashPosition.x] = ' ';
-        pokedex++;
+        pokeballs++;
     }
-    if (ashPosition.x > 0 && map[ashPosition.y][ashPosition.x - 1] == POKES)
+    if (ashPosition.x > 0 && map[ashPosition.y][ashPosition.x - 1] == POKEBALL)
     {
-        currentScene.currentScene = Scenes::COMBAT;
         map[ashPosition.y][ashPosition.x - 1] = ' ';
-        pokedex++;
+        pokeballs++;
     }
-    if (ashPosition.x < MAP_WIDTH - 1 && map[ashPosition.y][ashPosition.x + 1] == POKES)
+    if (ashPosition.x < MAP_WIDTH - 1 && map[ashPosition.y][ashPosition.x + 1] == POKEBALL)
     {
-        currentScene.currentScene = Scenes::COMBAT;
         map[ashPosition.y][ashPosition.x + 1] = ' ';
-        pokedex++;
+        pokeballs++;
+    }
+}
+
+void CombatPokes(Ash ashPosition, char** map, SceneManager currentScene)
+{
+    if (map[ashPosition.x][ashPosition.y] == POKES)
+    {
+        
     }
 }
