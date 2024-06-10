@@ -2,7 +2,7 @@
 #include <iostream>
 
 void CombatOptions()
-{
+{   
 	std::cout << "You found a wild Pokemon" << std::endl;
 	std::cout << std::endl;
 

@@ -31,7 +31,7 @@ void GeneratePokeballs(char** map, Area& area)
     }
 }
 
-void GeneratePokes(char** map, Area& area)
+void GeneratePokes(char** map, Area& area, Ash ashPosition)
 {
     int randX = area.startX + rand() % (area.endX - area.startX + 1);
     int randY = area.startY + rand() % (area.endY - area.startY + 1);
@@ -39,6 +39,10 @@ void GeneratePokes(char** map, Area& area)
     if (map[randY][randX] == ' ')
     {
         map[randY][randX] = POKES;
+    }
+    if (map[ashPosition.x][ashPosition.y] == map[randY][randX] && GetAsyncKeyState(VK_SPACE))
+    {
+        CombatOptions();
     }
 }
 
@@ -55,33 +59,33 @@ void ReGeneratePokes(char** map, const Area& area) {
     }
 }
 
-
-void CapturePokeballs(Ash ashPosition, char** map, int& pokeballs, SceneManager currentScene, Area& area)
+void CapturePokeballs(Ash ashPosition, char** map, int& pokes, SceneManager currentScene, Area& area)
 {
     bool capturedPokes = false;
 
+    
     if (ashPosition.y > 0 && map[ashPosition.y - 1][ashPosition.x] == POKEBALL)
     {
         map[ashPosition.y - 1][ashPosition.x] = ' ';
-        pokeballs++;
+        pokes++;
         capturedPokes = true;
     }
     if (ashPosition.y < MAP_HEIGHT - 1 && map[ashPosition.y + 1][ashPosition.x] == POKEBALL)
     {
         map[ashPosition.y + 1][ashPosition.x] = ' ';
-        pokeballs++;
+        pokes++;
         capturedPokes = true;
     }
     if (ashPosition.x > 0 && map[ashPosition.y][ashPosition.x - 1] == POKEBALL)
     {
         map[ashPosition.y][ashPosition.x - 1] = ' ';
-        pokeballs++;
+        pokes++;
         capturedPokes = true;
     }
     if (ashPosition.x < MAP_WIDTH - 1 && map[ashPosition.y][ashPosition.x + 1] == POKEBALL)
     {
         map[ashPosition.y][ashPosition.x + 1] = ' ';
-        pokeballs++;
+        pokes++;
         capturedPokes = true;
     }
     if (capturedPokes) {
@@ -89,10 +93,3 @@ void CapturePokeballs(Ash ashPosition, char** map, int& pokeballs, SceneManager 
     }
 }
 
-void CombatPokes(Ash ashPosition, char** map, SceneManager currentScene)
-{
-    if (map[ashPosition.x][ashPosition.y] == POKES)
-    {
-        
-    }
-}

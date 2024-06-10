@@ -46,7 +46,7 @@ int Map()
         }
     }
     area = { 0, 0, MAP_WIDTH / 2 - 2, MAP_HEIGHT / 2 - 2 };
-    GeneratePokes(map, area);
+    GeneratePokes(map, area, ashPosition);
     area1 = { 0, 0, MAP_WIDTH / 2 - 2, MAP_HEIGHT / 2 - 2 };
     GeneratePokeballs(map, area1);
 
@@ -109,67 +109,70 @@ int Map()
 int main()
 {
     SceneManager scenes;
-    scenes.currentScene = Scenes::MENU;
+    scenes.currentScene = Scenes::MAP;
 
     Config config;
    
     srand(time(nullptr));
 
-    switch (scenes.currentScene)
-    {
-    case Scenes::MENU:
-        MainMenu();
+    while (true) {
 
-        int menuDecision;
-        std::cin >> menuDecision;
+        switch (scenes.currentScene)
+        {
+        case Scenes::MENU:
+            MainMenu();
 
-        if (menuDecision == 1)
-        {
-            scenes.currentScene = Scenes::MAP;
-        }
-        else if (menuDecision == 2)
-        {
-            if (LeerConfig("config.txt", config)) {
-                
-                std::cout << "Ancho del mapa: " << config.ancho << std::endl;
-                std::cout << "Alto del mapa: " << config.alto << std::endl;
-                std::cout << "Pokémons en Pueblo Paleta: " << config.pokemonsPueblo << std::endl;
-                std::cout << "Pokémons requeridos en Pueblo Paleta: " << config.pokemonsRequeridosPueblo << std::endl;
-                std::cout << "Pokémons en el Bosque: " << config.pokemonsBosque << std::endl;
-                std::cout << "Pokémons requeridos en el Bosque: " << config.pokemonsRequeridosBosque << std::endl;
+            int menuDecision;
+            std::cin >> menuDecision;
+
+            if (menuDecision == 1)
+            {
+                scenes.currentScene = Scenes::MAP;
             }
-            else {
-                std::cerr << "Error al leer la configuración." << std::endl;
+            else if (menuDecision == 2)
+            {
+                if (LeerConfig("config.txt", config)) {
+
+                    std::cout << "Ancho del mapa: " << config.ancho << std::endl;
+                    std::cout << "Alto del mapa: " << config.alto << std::endl;
+                    std::cout << "Pokémons en Pueblo Paleta: " << config.pokemonsPueblo << std::endl;
+                    std::cout << "Pokémons requeridos en Pueblo Paleta: " << config.pokemonsRequeridosPueblo << std::endl;
+                    std::cout << "Pokémons en el Bosque: " << config.pokemonsBosque << std::endl;
+                    std::cout << "Pokémons requeridos en el Bosque: " << config.pokemonsRequeridosBosque << std::endl;
+                }
+                else {
+                    std::cerr << "Error al leer la configuración." << std::endl;
+                }
+
+                break;
+            }
+            else if (menuDecision == 3)
+            {
+                return -1;
             }
 
-            break;
-        }
-        else if (menuDecision == 3)
-        {
-            return -1;
-        }
-
-    case Scenes::MAP:
-        Map();
-
-    case Scenes::COMBAT:
-        CombatOptions();
-
-        int combatDecision;
-        std::cin >> combatDecision;
-
-        if (combatDecision == 1)
-        {
-            // VIDA DE LOS POKEMON
-        }
-        else if (combatDecision == 2)
-        {
-            pokedex++;
-            std::cout << pokedex;
-        }
-        else if (combatDecision == 3)
-        {
+        case Scenes::MAP:
             Map();
+
+        case Scenes::COMBAT:
+            CombatOptions();
+
+            int combatDecision;
+            std::cin >> combatDecision;
+
+            if (combatDecision == 1)
+            {
+                // VIDA DE LOS POKEMON
+            }
+            else if (combatDecision == 2)
+            {
+                pokedex++;
+                std::cout << pokedex;
+            }
+            else if (combatDecision == 3)
+            {
+                Map();
+            }
         }
     }
 }
