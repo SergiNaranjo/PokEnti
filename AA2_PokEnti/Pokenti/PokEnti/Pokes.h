@@ -4,6 +4,7 @@
 #include "Combat.h"
 #include "SceneManager.h"
 #include "Map.h"
+#include "GameOver.h"
 #include <cstdlib>
 
 struct Area {
@@ -18,7 +19,7 @@ enum class Pokes{
     PIDGEY, 
     CATERPIE,
     MAGIKARP, 
-    PIKACHU, 
+    PIKACHU,
     COUNT
 };
 
@@ -57,6 +58,26 @@ void GeneratePokeballs(char** map, Area& area)
             --i;
         }
     }
+}
+
+void GenerateMewtwo(char** map, Ash ashPosition) {
+    
+    int startX2 = MAP_WIDTH/2 +1;
+    int startY2 = MAP_HEIGHT/2 + 1;
+    int endX2 = MAP_WIDTH - 1;
+    int endY2 = MAP_HEIGHT - 1;
+
+        int randX = startX2 + rand() % (endX2 - startX2 + 1);
+        int randY = startY2 + rand() % (endY2 - startY2 + 1);
+
+        if(map[randX][randY] == ' ') {
+            map[randX][randY] = MEWTWO;
+        }
+        if (map[ashPosition.x][ashPosition.y] == map[randY][randX] && GetAsyncKeyState(VK_SPACE))
+        {
+            CombatOptions();
+        }
+    
 }
 
 void GeneratePokes(char** map, Area& area, Ash ashPosition)
@@ -282,3 +303,164 @@ void CapturePokes(Ash ashPosition, char** map, int& pokedex, int& pokeballs, Sce
     }
 }
 
+void CaptureMewtwo(Ash ashPosition, char** map, int& pokedex, int& pokeballs, SceneManager currentScene, Area& area)
+{
+    bool capturedPokes = false;
+    bool pokeAlive = true;
+    int actualHealth = MEWTWO_HEALTH;
+
+    if (pokeballs > 0) {
+
+        if (ashPosition.y > 0 && map[ashPosition.y - 1][ashPosition.x] == MEWTWO)
+        {
+            while (pokeAlive) {
+                std::cout << "You found Mewtwo " << std::endl;
+                std::cout << actualHealth << std::endl;
+                CombatOptions();
+
+                int combatDecision;
+                std::cin >> combatDecision;
+
+
+                if (combatDecision == 1)
+                {
+
+                    if (actualHealth > 0) {
+                        actualHealth -= PIKACHU_ATACK;
+                    }
+                    else if (actualHealth == 0) {
+                        map[ashPosition.y - 1][ashPosition.x] = ' ';
+                        pokeAlive = false;
+                    }
+
+                }
+                else if (combatDecision == 2)
+                {
+                    map[ashPosition.y - 1][ashPosition.x] = ' ';
+                    pokedex++;
+                    std::cout << pokedex;
+                    pokeballs--;
+                    std::cout << pokeballs;
+                    pokeAlive = false;
+                }
+                else if (combatDecision == 3)
+                {
+                    currentScene.currentScene = Scenes::MAP;
+                    pokeAlive = false;
+                }
+            }
+        }
+        if (ashPosition.y < MAP_HEIGHT - 1 && map[ashPosition.y + 1][ashPosition.x] == MEWTWO)
+        {
+            while (pokeAlive) {
+                std::cout << "You found Mewtwo " << std::endl;
+                std::cout << actualHealth << std::endl;
+                CombatOptions();
+
+                int combatDecision;
+                std::cin >> combatDecision;
+
+
+                if (combatDecision == 1)
+                {
+                    if (actualHealth > 0) {
+                        actualHealth -= PIKACHU_ATACK;
+                    }
+                    else if (actualHealth == 0) {
+                        map[ashPosition.y + 1][ashPosition.x] = ' ';
+                        pokeAlive = false;
+                    }
+                }
+
+                else if (combatDecision == 2)
+                {
+                    map[ashPosition.y + 1][ashPosition.x] = ' ';
+                    pokedex++;
+                    std::cout << pokedex;
+                    pokeballs--;
+                    std::cout << pokeballs;
+                    pokeAlive = false;
+                }
+                else if (combatDecision == 3)
+                {
+                    currentScene.currentScene = Scenes::MAP;
+                    pokeAlive = false;
+                }
+            }
+        }
+        if (ashPosition.x > 0 && map[ashPosition.y][ashPosition.x - 1] == MEWTWO)
+        {
+            while (pokeAlive) {
+                std::cout << "You found Mewtwo " << std::endl;
+                std::cout << actualHealth << std::endl;
+                CombatOptions();
+
+                int combatDecision;
+                std::cin >> combatDecision;
+
+                if (combatDecision == 1)
+                {
+                    if (actualHealth > 0) {
+                        actualHealth -= PIKACHU_ATACK;
+                    }
+                    else if (actualHealth == 0) {
+                        map[ashPosition.y][ashPosition.x - 1] = ' ';
+                        pokeAlive = false;
+                    }
+                }
+                else if (combatDecision == 2)
+                {
+                    map[ashPosition.y][ashPosition.x - 1] = ' ';
+                    pokedex++;
+                    std::cout << pokedex;
+                    pokeballs--;
+                    std::cout << pokeballs;
+                    pokeAlive = false;
+                }
+                else if (combatDecision == 3)
+                {
+                    currentScene.currentScene = Scenes::MAP;
+                    pokeAlive = false;
+                }
+            }
+        }
+        if (ashPosition.x < MAP_WIDTH - 1 && map[ashPosition.y][ashPosition.x + 1] == MEWTWO)
+        {
+            while (pokeAlive) {
+                std::cout << "You found Mewtwo " << std::endl;
+                std::cout << actualHealth << std::endl;
+                CombatOptions();
+
+                int combatDecision;
+                std::cin >> combatDecision;
+
+                if (combatDecision == 1)
+                {
+                    if (actualHealth > 0) {
+                        actualHealth -= PIKACHU_ATACK;
+                    }
+                    else if (actualHealth == 0) {
+                        map[ashPosition.y][ashPosition.x + 1] = ' ';
+                        pokeAlive = false;
+                    }
+                }
+                else if (combatDecision == 2)
+                {
+                    map[ashPosition.y][ashPosition.x + 1] = ' ';
+                    pokedex++;
+                    std::cout << pokedex;
+                    pokeballs--;
+                    std::cout << pokeballs;
+                    pokeAlive = false;
+                }
+                else if (combatDecision == 3)
+                {
+                    currentScene.currentScene = Scenes::MAP;
+                    pokeAlive = false;
+                }
+                
+            }
+        }
+        
+    }
+}

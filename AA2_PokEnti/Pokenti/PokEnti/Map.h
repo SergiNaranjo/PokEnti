@@ -102,6 +102,7 @@ void MoveToNextRegion(Ash& ashPosition, Region& currentRegion, int pokedex, char
         currentRegion = Region::CIUDAD_CELESTE;
         Area area = { MAP_WIDTH / 2 + 1, MAP_HEIGHT / 2 + 1, MAP_WIDTH - 1, MAP_HEIGHT - 1 };
         GeneratePokeballs(map, area);
+        GenerateMewtwo(map, ashPosition);
     }
     else if (pokedex >= MIN_POKES*3)
     {

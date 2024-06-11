@@ -91,6 +91,7 @@ int Map()
         {
             CapturePokeballs(ashPosition, map, pokeballs, scene, area1);
             CapturePokes(ashPosition, map, pokedex, pokeballs, scene, area);
+            CaptureMewtwo(ashPosition, map, pokedex, pokeballs, scene, area);
         }
         if (GetAsyncKeyState(VK_ESCAPE))
         {
