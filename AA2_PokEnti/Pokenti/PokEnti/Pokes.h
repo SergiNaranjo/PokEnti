@@ -115,120 +115,170 @@ void CapturePokeballs(Ash ashPosition, char** map, int& pokeballs, SceneManager 
 void CapturePokes(Ash ashPosition, char** map, int& pokedex, int& pokeballs, SceneManager currentScene, Area& area)
 {
     bool capturedPokes = false;
-    int actualHealth = 0;
+    bool pokeAlive = true;
+    int actualHealth = POKES_HEALTH;
     srand(time(NULL));
     int randomIndex = rand() % static_cast<int>(Pokes::COUNT);
     Pokes randomPoke = static_cast<Pokes>(randomIndex);
 
     if (pokeballs > 0) {
-        if (ashPosition.y > 0 && map[ashPosition.y - 1][ashPosition.x] == POKES)
-        {
+     
+            if (ashPosition.y > 0 && map[ashPosition.y - 1][ashPosition.x] == POKES)
+            {
+                while (pokeAlive) {
+                    std::cout << "You found a wild " << PokeToString(randomPoke) << std::endl;
+                    std::cout << actualHealth << std::endl;
+                    CombatOptions();
 
-            std::cout << "You found a wild " << PokeToString(randomPoke) << std::endl;
-            CombatOptions();
+                    int combatDecision;
+                    std::cin >> combatDecision;
 
-            int combatDecision;
-            std::cin >> combatDecision;
 
-            if (combatDecision == 1)
-            {
-                // VIDA DE LOS POKEMON
-            }
-            else if (combatDecision == 2)
-            {
-                map[ashPosition.y - 1][ashPosition.x] = ' ';
-                pokedex++;
-                std::cout << pokedex;
-                pokeballs--;
-                std::cout << pokeballs;
-            }
-            else if (combatDecision == 3)
-            {
-                currentScene.currentScene = Scenes::MAP;
-            }
-            capturedPokes = true;
-        }
-        if (ashPosition.y < MAP_HEIGHT - 1 && map[ashPosition.y + 1][ashPosition.x] == POKES)
-        {
-            std::cout << "You found a wild " << PokeToString(randomPoke) << std::endl;
-            CombatOptions();
+                    if (combatDecision == 1)
+                    {
 
-            int combatDecision;
-            std::cin >> combatDecision;
+                        if (actualHealth > 0) {
+                            actualHealth -= PIKACHU_ATACK;
+                        }
+                        else if (actualHealth == 0) {
+                            map[ashPosition.y - 1][ashPosition.x] = ' ';
+                            pokeAlive = false;
+                        }
 
-            if (combatDecision == 1)
-            {
-                // VIDA DE LOS POKEMON
+                    }
+                    else if (combatDecision == 2)
+                    {
+                        map[ashPosition.y - 1][ashPosition.x] = ' ';
+                        pokedex++;
+                        std::cout << pokedex;
+                        pokeballs--;
+                        std::cout << pokeballs;
+                        pokeAlive = false;
+                    }
+                    else if (combatDecision == 3)
+                    {
+                        currentScene.currentScene = Scenes::MAP; 
+                        pokeAlive = false;
+                    }
+                    capturedPokes = true;
+                }
             }
-            else if (combatDecision == 2)
+            if (ashPosition.y < MAP_HEIGHT - 1 && map[ashPosition.y + 1][ashPosition.x] == POKES)
             {
-                map[ashPosition.y + 1][ashPosition.x] = ' ';
-                pokedex++;
-                std::cout << pokedex;
-                pokeballs--;
-                std::cout << pokeballs;
-            }
-            else if (combatDecision == 3)
-            {
-                currentScene.currentScene = Scenes::MAP;
-            }
-            capturedPokes = true;
-        }
-        if (ashPosition.x > 0 && map[ashPosition.y][ashPosition.x - 1] == POKES)
-        {
-            std::cout << "You found a wild " << PokeToString(randomPoke) << std::endl;
-            CombatOptions();
+                while (pokeAlive) {
+                    std::cout << "You found a wild " << PokeToString(randomPoke) << std::endl;
+                    std::cout << actualHealth << std::endl;
+                    CombatOptions();
 
-            int combatDecision;
-            std::cin >> combatDecision;
+                    int combatDecision;
+                    std::cin >> combatDecision;
 
-            if (combatDecision == 1)
-            {
-                // VIDA DE LOS POKEMON
-            }
-            else if (combatDecision == 2)
-            {
-                map[ashPosition.y][ashPosition.x - 1] = ' ';
-                pokedex++;
-                std::cout << pokedex;
-                pokeballs--;
-                std::cout << pokeballs;
-            }
-            else if (combatDecision == 3)
-            {
-                currentScene.currentScene = Scenes::MAP;
-            }
-            capturedPokes = true;
-        }
-        if (ashPosition.x < MAP_WIDTH - 1 && map[ashPosition.y][ashPosition.x + 1] == POKES)
-        {
-            std::cout << "You found a wild " << PokeToString(randomPoke) << std::endl;
-            CombatOptions();
 
-            int combatDecision;
-            std::cin >> combatDecision;
+                    if (combatDecision == 1)
+                    {
+                        if (actualHealth > 0) {
+                            actualHealth -= PIKACHU_ATACK;
+                        }
+                        else if (actualHealth == 0) {
+                            map[ashPosition.y + 1][ashPosition.x] = ' ';
+                            pokeAlive = false;
+                        }
+                    }
 
-            if (combatDecision == 1)
-            {
-                // VIDA DE LOS POKEMON
+                    else if (combatDecision == 2)
+                    {
+                        map[ashPosition.y + 1][ashPosition.x] = ' ';
+                        pokedex++;
+                        std::cout << pokedex;
+                        pokeballs--;
+                        std::cout << pokeballs;
+                        pokeAlive = false;
+                    }
+                    else if (combatDecision == 3)
+                    {
+                        currentScene.currentScene = Scenes::MAP;
+                        pokeAlive = false;
+                    }
+                    capturedPokes = true;
+                }
             }
-            else if (combatDecision == 2)
+            if (ashPosition.x > 0 && map[ashPosition.y][ashPosition.x - 1] == POKES)
             {
-                map[ashPosition.y][ashPosition.x + 1] = ' ';
-                pokedex++;
-                std::cout << pokedex;
-                pokeballs--;
-                std::cout << pokeballs;
+                while (pokeAlive) {
+                    std::cout << "You found a wild " << PokeToString(randomPoke) << std::endl;
+                    std::cout << actualHealth << std::endl;
+                    CombatOptions();
+
+                    int combatDecision;
+                    std::cin >> combatDecision;
+
+                    if (combatDecision == 1)
+                    {
+                        if (actualHealth > 0) {
+                            actualHealth -= PIKACHU_ATACK;
+                        }
+                        else if (actualHealth == 0) {
+                            map[ashPosition.y][ashPosition.x - 1] = ' ';
+                            pokeAlive = false;
+                        }
+                    }
+                    else if (combatDecision == 2)
+                    {
+                        map[ashPosition.y][ashPosition.x - 1] = ' ';
+                        pokedex++;
+                        std::cout << pokedex;
+                        pokeballs--;
+                        std::cout << pokeballs;
+                        pokeAlive = false;
+                    }
+                    else if (combatDecision == 3)
+                    {
+                        currentScene.currentScene = Scenes::MAP;
+                        pokeAlive = false;
+                    }
+                    capturedPokes = true;
+                }
             }
-            else if (combatDecision == 3)
+            if (ashPosition.x < MAP_WIDTH - 1 && map[ashPosition.y][ashPosition.x + 1] == POKES)
             {
-                currentScene.currentScene = Scenes::MAP;
+                while (pokeAlive) {
+                    std::cout << "You found a wild " << PokeToString(randomPoke) << std::endl;
+                    std::cout << actualHealth << std::endl;
+                    CombatOptions();
+
+                    int combatDecision;
+                    std::cin >> combatDecision;
+
+                    if (combatDecision == 1)
+                    {
+                        if (actualHealth > 0) {
+                            actualHealth -= PIKACHU_ATACK;
+                        }
+                        else if (actualHealth == 0) {
+                            map[ashPosition.y][ashPosition.x + 1] = ' ';
+                            pokeAlive = false;
+                        }
+                    }
+                    else if (combatDecision == 2)
+                    {
+                        map[ashPosition.y][ashPosition.x + 1] = ' ';
+                        pokedex++;
+                        std::cout << pokedex;
+                        pokeballs--;
+                        std::cout << pokeballs;
+                        pokeAlive = false;
+                    }
+                    else if (combatDecision == 3)
+                    {
+                        currentScene.currentScene = Scenes::MAP;
+                        pokeAlive = false;
+                    }
+                    capturedPokes = true;
+                }
             }
-            capturedPokes = true;
-        }
-        if (capturedPokes) {
-            ReGeneratePokes(map, area);
-        }
+            if (capturedPokes) {
+                ReGeneratePokes(map, area);
+            }
     }
 }
 

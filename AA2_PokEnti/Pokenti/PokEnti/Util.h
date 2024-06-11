@@ -15,6 +15,7 @@ const int NUM_FPS = 20;
 
 const int POKES_HEALTH = 100;
 const int MEWTWO_HEALTH = 300;
+const int PIKACHU_ATACK = 20;
 
 const char WALLS = 'X';
 const char POKES = 'P';
