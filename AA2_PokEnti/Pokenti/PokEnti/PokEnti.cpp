@@ -162,7 +162,7 @@ int main()
         case Scenes::MAP:
             Map();
            
-            case Scenes::GAMEOVER:
+        case Scenes::GAMEOVER:
                 GameOver();
                 int menuGameOver;
                 std::cin >> menuGameOver;
