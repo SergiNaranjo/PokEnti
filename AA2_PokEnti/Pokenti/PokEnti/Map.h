@@ -17,6 +17,35 @@ void PrintMap(Ash ashPosition, char** map, int pokedex, int pokeballs)
 
     std::cout << "Pokedex: " << pokedex << "\tPokeballs: " << pokeballs << std::endl;
 
+    if (ashPosition.x < MAP_WIDTH / 2)
+    {
+        if (ashPosition.y < MAP_HEIGHT / 2)
+        {
+            std::cout << "\tPUEBLO PALETA" << std::endl;
+        }
+    }
+    if (ashPosition.x > MAP_WIDTH / 2)
+    {
+        if (ashPosition.y < MAP_HEIGHT / 2)
+        {
+            std::cout << "\tBOSQUE VERDE" << std::endl;
+        }
+    }
+    if (ashPosition.x > MAP_WIDTH / 2)
+    {
+        if (ashPosition.y > MAP_HEIGHT / 2)
+        {
+            std::cout << "\tCUEVA CELESTE" << std::endl;
+        }
+    }
+    if (ashPosition.x < MAP_WIDTH / 2)
+    {
+        if (ashPosition.y > MAP_HEIGHT / 2)
+        {
+            std::cout << "\tLIGA POKENTI" << std::endl;
+        }
+    }
+
     char ashSymbol;
     if (GetAsyncKeyState(VK_UP)) 
     {
