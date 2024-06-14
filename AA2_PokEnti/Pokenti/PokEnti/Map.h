@@ -11,6 +11,40 @@ enum class Region
     COUNT
 };
 
+struct Position {
+    int x;
+    int y;
+};
+
+
+void InitRandom() {
+    std::srand(std::time(0));
+}
+
+
+int GetRandomDirection() {
+    return std::rand() % 4;
+}
+
+void MovePokemon(Position& pos) {
+    int direction = GetRandomDirection();
+
+    switch (direction) {
+    case 0: // izquierda
+        if (pos.x > 0) pos.x--;
+        break;
+    case 1: // derecha
+        if (pos.x < MAP_WIDTH - 1) pos.x++;
+        break;
+    case 2: // arriba
+        if (pos.y > 0) pos.y--;
+        break;
+    case 3: // abajo
+        if (pos.y < MAP_HEIGHT - 1) pos.y++;
+        break;
+    }
+}
+
 void PrintMap(Ash ashPosition, char** map, int pokedex, int pokeballs)
 {
     system("cls");

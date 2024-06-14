@@ -44,7 +44,7 @@ void GenerateRandomPokes() {
 
 void GeneratePokeballs(char** map, Area& area)
 {
-    for (int i = 0; i < MIN_POKES; ++i)
+    for (int i = 0; i < MIN_POKES + 1; ++i)
     {
         int randX = area.startX + rand() % (area.endX - area.startX + 1);
         int randY = area.startY + rand() % (area.endY - area.startY + 1);
@@ -77,21 +77,26 @@ void GenerateMewtwo(char** map, Ash ashPosition) {
         {
             CombatOptions();
         }
-    
+       
 }
 
 void GeneratePokes(char** map, Area& area, Ash ashPosition)
 {
     int randX = area.startX + rand() % (area.endX - area.startX + 1);
     int randY = area.startY + rand() % (area.endY - area.startY + 1);
+    for (int i = 0; i < MIN_POKES; i++)
+    {
 
-    if (map[randY][randX] == ' ')
-    {
-        map[randY][randX] = POKES;
-    }
-    if (map[ashPosition.x][ashPosition.y] == map[randY][randX] && GetAsyncKeyState(VK_SPACE))
-    {
-        CombatOptions();
+
+        if (map[randY][randX] == ' ')
+        {
+            map[randY][randX] = POKES;
+        }
+        if (map[ashPosition.x][ashPosition.y] == map[randY][randX] && GetAsyncKeyState(VK_SPACE))
+        {
+            CombatOptions();
+        }
+        
     }
 }
 
@@ -103,8 +108,8 @@ void ReGeneratePokes(char** map, const Area& area) {
         if (map[randY][randX] == ' ')
         {
             map[randY][randX] = POKES;
-            break;
         }
+        break;
     }
 }
 
