@@ -38,8 +38,6 @@ void GenerateRandomPokes() {
     srand(time(NULL));
     int randomIndex = rand() % static_cast<int>(Pokes::COUNT);
     Pokes randomPoke = static_cast<Pokes>(randomIndex);
-
-
 }
 
 void GeneratePokeballs(char** map, Area& area)
@@ -84,10 +82,9 @@ void GeneratePokes(char** map, Area& area, Ash ashPosition)
 {
     int randX = area.startX + rand() % (area.endX - area.startX + 1);
     int randY = area.startY + rand() % (area.endY - area.startY + 1);
+
     for (int i = 0; i < MIN_POKES; i++)
     {
-
-
         if (map[randY][randX] == ' ')
         {
             map[randY][randX] = POKES;

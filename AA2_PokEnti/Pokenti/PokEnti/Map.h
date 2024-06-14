@@ -138,8 +138,9 @@ void PrintMap(Ash ashPosition, char** map, int pokedex, int pokeballs)
     
 }
 
-void MoveToNextRegion(Ash& ashPosition, Region& currentRegion, int pokedex, char** map)
+void MoveToNextRegion(Ash& ashPosition, Region& currentRegion, int pokedex, char** map, Area& area)
 {
+
     if (pokedex >= MIN_POKES && pokedex < MIN_POKES*2)
     {
         for (int i = 0; i <= MAP_HEIGHT / 2 - 2; ++i)
@@ -150,8 +151,9 @@ void MoveToNextRegion(Ash& ashPosition, Region& currentRegion, int pokedex, char
             }
         }
         currentRegion = Region::BOSQUE_VERDE;
-        Area area = { MAP_WIDTH / 2 + 1, 0, MAP_WIDTH - 1, MAP_HEIGHT / 2 - 2 };
+        area = { MAP_WIDTH / 2 + 1, 0, MAP_WIDTH - 1, MAP_HEIGHT / 2 - 2 };
         GeneratePokeballs(map, area);
+        GeneratePokes(map, area, ashPosition);
     }
     else if (pokedex >= MIN_POKES * 2 && pokedex < MIN_POKES*3)
     {
@@ -163,9 +165,10 @@ void MoveToNextRegion(Ash& ashPosition, Region& currentRegion, int pokedex, char
             }
         }
         currentRegion = Region::CIUDAD_CELESTE;
-        Area area = { MAP_WIDTH / 2 + 1, MAP_HEIGHT / 2 + 1, MAP_WIDTH - 1, MAP_HEIGHT - 1 };
+        area = { MAP_WIDTH / 2 + 1, MAP_HEIGHT / 2 + 1, MAP_WIDTH - 1, MAP_HEIGHT - 1 };
         GeneratePokeballs(map, area);
         GenerateMewtwo(map, ashPosition);
+        GeneratePokes(map, area, ashPosition);
     }
     else if (pokedex >= MIN_POKES*3)
     {
@@ -177,7 +180,8 @@ void MoveToNextRegion(Ash& ashPosition, Region& currentRegion, int pokedex, char
             }
         }
         currentRegion = Region::LIGA_POKENTI;
-        Area area = { 0, MAP_HEIGHT / 2 + 1, MAP_WIDTH / 2 - 2, MAP_HEIGHT - 1 };
+        area = { 0, MAP_HEIGHT / 2 + 1, MAP_WIDTH / 2 - 2, MAP_HEIGHT - 1 };
         GeneratePokeballs(map, area);
+        GeneratePokes(map, area, ashPosition);
     }
 }

@@ -59,7 +59,7 @@ int Map()
             (currentRegion == Region::BOSQUE_VERDE && pokedex == MIN_POKES * 2) ||
             (currentRegion == Region::CIUDAD_CELESTE && pokedex == MIN_POKES * 3))
         {
-            MoveToNextRegion(ashPosition, currentRegion, pokedex, map);
+            MoveToNextRegion(ashPosition, currentRegion, pokedex, map, area);
         }
 
         if (pokedex == MIN_POKES*4)
