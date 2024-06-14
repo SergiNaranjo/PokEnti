@@ -16,12 +16,6 @@ struct Position {
     int y;
 };
 
-
-void InitRandom() {
-    std::srand(std::time(0));
-}
-
-
 int GetRandomDirection() {
     return std::rand() % 4;
 }
@@ -30,16 +24,16 @@ void MovePokemon(Position& pos) {
     int direction = GetRandomDirection();
 
     switch (direction) {
-    case 0: // izquierda
+    case 0: 
         if (pos.x > 0) pos.x--;
         break;
-    case 1: // derecha
+    case 1: 
         if (pos.x < MAP_WIDTH - 1) pos.x++;
         break;
-    case 2: // arriba
+    case 2: 
         if (pos.y > 0) pos.y--;
         break;
-    case 3: // abajo
+    case 3: 
         if (pos.y < MAP_HEIGHT - 1) pos.y++;
         break;
     }

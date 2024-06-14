@@ -12,6 +12,7 @@
 #include "Util.h"
 #include "SceneManager.h"
 #include "GameOver.h"
+#include "SplasherScreen.h"
 
 int pokedex = 0;
 int pokeballs = 1;
@@ -112,7 +113,7 @@ int Map()
 int main()
 {
     SceneManager scenes;
-    scenes.currentScene = Scenes::MAP;
+    scenes.currentScene = Scenes::SPLASH_SCREEN;
 
     Config config;
    
@@ -122,6 +123,16 @@ int main()
 
         switch (scenes.currentScene)
         {
+        case Scenes::SPLASH_SCREEN:
+            SplashScreen();
+            int choise;
+            std::cout << std::endl;
+            std::cout << "Press 1 to play" << std::endl;
+            std::cin >> choise;
+            if (choise == 1) 
+            {
+                scenes.currentScene = Scenes::MENU;
+            }
         case Scenes::MENU:
             MainMenu();
 
