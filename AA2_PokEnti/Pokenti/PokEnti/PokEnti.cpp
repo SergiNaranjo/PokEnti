@@ -5,17 +5,11 @@
 #include <ctime> 
 #include <windows.h>
 #include "Ash.h"
-#include "Map.h"
-#include "Conf.h"  
+#include "Map.h"  
 #include "Menu.h"
 #include "Combat.h"
-#include "Util.h"
 #include "SceneManager.h"
-#include "GameOver.h"
 #include "SplasherScreen.h"
-
-int pokedex = 0;
-int pokeballs = 1;
 
 int Map()
 {
@@ -171,19 +165,7 @@ int main()
             }
 
         case Scenes::MAP:
-            Map();
-           
-        case Scenes::GAMEOVER:
-                GameOver();
-                int menuGameOver;
-                std::cin >> menuGameOver;
-                if (menuGameOver == 1) {
-                    Map();
-                }
-                else if (menuGameOver == 2) {
-                    return 0;
-                }
-                
+            Map();       
         }
     }
 }

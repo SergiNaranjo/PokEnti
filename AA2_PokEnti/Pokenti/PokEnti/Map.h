@@ -11,12 +11,14 @@ enum class Region
     COUNT
 };
 
-struct Position {
+struct Position 
+{
     int x;
     int y;
 };
 
-int GetRandomDirection() {
+int GetRandomDirection() 
+{
     return std::rand() % 4;
 }
 
@@ -111,7 +113,6 @@ void PrintMap(Ash ashPosition, char** map, int pokedex, int pokeballs)
         }
        
             ashSymbol = 'A';
-        
     }
 
     for (int i = 0; i < MAP_HEIGHT; ++i)
@@ -128,13 +129,11 @@ void PrintMap(Ash ashPosition, char** map, int pokedex, int pokeballs)
             }
         }
         std::cout << std::endl;
-    }
-    
+    } 
 }
 
 void MoveToNextRegion(Ash& ashPosition, Region& currentRegion, int pokedex, char** map, Area& area)
 {
-
     if (pokedex >= MIN_POKES && pokedex < MIN_POKES*2)
     {
         for (int i = 0; i <= MAP_HEIGHT / 2 - 2; ++i)

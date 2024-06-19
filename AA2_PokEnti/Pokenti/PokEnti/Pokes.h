@@ -7,14 +7,16 @@
 #include "GameOver.h"
 #include <cstdlib>
 
-struct Area {
+struct Area 
+{
     int startX; 
     int startY;
     int endX; 
     int endY;
 };
 
-enum class Pokes{
+enum class Pokes
+{
     RATTATA, 
     PIDGEY, 
     CATERPIE,
@@ -23,18 +25,26 @@ enum class Pokes{
     COUNT
 };
 
-const char* PokeToString(Pokes poke) {
+const char* PokeToString(Pokes poke) 
+{
 
-    switch (poke) {
-    case Pokes::RATTATA: return "RATTATA";
-    case Pokes::PIDGEY: return "PIDGEY";
-    case Pokes::CATERPIE: return "CATERPIE";
-    case Pokes::MAGIKARP: return "MAGIKARP";
-    case Pokes::PIKACHU: return "PIKACHU";
+    switch (poke) 
+    {
+    case Pokes::RATTATA: 
+        return "RATTATA";
+    case Pokes::PIDGEY: 
+        return "PIDGEY";
+    case Pokes::CATERPIE: 
+        return "CATERPIE";
+    case Pokes::MAGIKARP: 
+        return "MAGIKARP";
+    case Pokes::PIKACHU: 
+        return "PIKACHU";
     }
 }
 
-void GenerateRandomPokes() {
+void GenerateRandomPokes() 
+{
     srand(time(NULL));
     int randomIndex = rand() % static_cast<int>(Pokes::COUNT);
     Pokes randomPoke = static_cast<Pokes>(randomIndex);
@@ -58,7 +68,8 @@ void GeneratePokeballs(char** map, Area& area)
     }
 }
 
-void GenerateMewtwo(char** map, Ash ashPosition) {
+void GenerateMewtwo(char** map, Ash ashPosition) 
+{
     
     int startX2 = MAP_WIDTH/2 +1;
     int startY2 = MAP_HEIGHT/2 + 1;
@@ -75,7 +86,6 @@ void GenerateMewtwo(char** map, Ash ashPosition) {
         {
             CombatOptions();
         }
-       
 }
 
 void GeneratePokes(char** map, Area& area, Ash ashPosition)
@@ -93,7 +103,6 @@ void GeneratePokes(char** map, Area& area, Ash ashPosition)
         {
             CombatOptions();
         }
-        
     }
 }
 

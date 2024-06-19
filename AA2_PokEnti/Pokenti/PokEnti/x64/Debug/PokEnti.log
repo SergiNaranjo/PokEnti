@@ -1,6 +1,6 @@
 ﻿  PokEnti.cpp
-C:\Users\hecto\Desktop\PokEnti\AA2_PokEnti\Pokenti\PokEnti\Pokes.h(38,15): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
-C:\Users\hecto\Desktop\PokEnti\AA2_PokEnti\Pokenti\PokEnti\Pokes.h(143,15): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
-C:\Users\hecto\Desktop\PokEnti\AA2_PokEnti\Pokenti\PokEnti\PokEnti.cpp(120,15): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
-C:\Users\hecto\Desktop\PokEnti\AA2_PokEnti\Pokenti\PokEnti\Pokes.h(35): warning C4715: 'PokeToString': no todas las rutas de acceso de control devuelven un valor
-  PokEnti.vcxproj -> C:\Users\hecto\Desktop\PokEnti\AA2_PokEnti\Pokenti\x64\Debug\PokEnti.exe
+C:\Users\Sergi\Desktop\ZornozaHector_NaranjoSergi_AA2\AA2_PokEnti\Pokenti\PokEnti\Pokes.h(48,15): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
+C:\Users\Sergi\Desktop\ZornozaHector_NaranjoSergi_AA2\AA2_PokEnti\Pokenti\PokEnti\Pokes.h(152,15): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
+C:\Users\Sergi\Desktop\ZornozaHector_NaranjoSergi_AA2\AA2_PokEnti\Pokenti\PokEnti\PokEnti.cpp(114,15): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
+C:\Users\Sergi\Desktop\ZornozaHector_NaranjoSergi_AA2\AA2_PokEnti\Pokenti\PokEnti\Pokes.h(44): warning C4715: 'PokeToString': no todas las rutas de acceso de control devuelven un valor
+  PokEnti.vcxproj -> C:\Users\Sergi\Desktop\ZornozaHector_NaranjoSergi_AA2\AA2_PokEnti\Pokenti\x64\Debug\PokEnti.exe
